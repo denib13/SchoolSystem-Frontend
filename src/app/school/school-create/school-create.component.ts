@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../../material/material.module';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SchoolService } from '../services/school.service';
+import { SchoolService } from '../../services/school.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 

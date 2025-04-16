@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../material/material.module';
-import { SchoolService } from '../services/school.service';
+import { MaterialModule } from '../../material/material.module';
+import { SchoolService } from '../../services/school.service';
 import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
-import { School } from '../models/school';
+import { School } from '../../models/school';
 
 @Component({
   selector: 'app-school-list',

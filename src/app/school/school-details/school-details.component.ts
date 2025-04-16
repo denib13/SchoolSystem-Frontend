@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../material/material.module';
-import { SchoolService } from '../services/school.service';
-import { School } from '../models/school';
+import { MaterialModule } from '../../material/material.module';
+import { SchoolService } from '../../services/school.service';
+import { School } from '../../models/school';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../material/material.module';
-import { SchoolService } from '../services/school.service';
+import { MaterialModule } from '../../material/material.module';
+import { SchoolService } from '../../services/school.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { School } from '../models/school';
+import { School } from '../../models/school';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
