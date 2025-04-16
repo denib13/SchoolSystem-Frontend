@@ -1,0 +1,14 @@
+<mat-card class="school" appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>
+            {{ school.name }}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>{{ school.city }}</mat-card-content>
+    <mat-card-actions>
+        <div class="button-row">
+        <button mat-flat-button color="primary" (click)="updateSchool()">Update School</button>
+        <button mat-flat-button color="accent" (click)="deleteSchool()">Delete School</button>
+        </div>
+    </mat-card-actions>
+</mat-card>
