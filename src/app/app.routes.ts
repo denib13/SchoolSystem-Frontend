@@ -6,6 +6,18 @@ import { SchoolListComponent } from './school/school-list/school-list.component'
 import { SchoolDetailsComponent } from './school/school-details/school-details.component';
 import { SchoolUpdateComponent } from './school/school-update/school-update.component';
 import { SchoolCreateComponent } from './school/school-create/school-create.component';
+import { HeadmasterListComponent } from './headmaster/headmaster-list/headdmaster-list/headmaster-list.component';
+import { HeadmasterDetailsComponent } from './headmaster/headmaster-details/headmaster-details.component';
+import { HeadmasterUpdateComponent } from './headmaster/headmaster-update/headmaster-update.component';
+import { StudentListComponent } from './student/student-list/student-list.component';
+import { StudentDetailsComponent } from './student/student-details/student-details.component';
+import { StudentUpdateComponent } from './student/student-update/student-update.component';
+import { TeacherListComponent } from './teacher/teacher-list/teacher-list.component';
+import { TeacherDetailsComponent } from './teacher/teacher-details/teacher-details.component';
+import { TeacherUpdateComponent } from './teacher/teacher-update/teacher-update.component';
+import { ParentListComponent } from './parent/parent-list/parent-list.component';
+import { ParentDetailsComponent } from './parent/parent-details/parent-details.component';
+import { ParentUpdateComponent } from './parent/parent-update/parent-update.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -37,6 +49,114 @@ export const routes: Routes = [
                         path: 'update',
                         title: 'SchoolSystem | Update School',
                         component: SchoolUpdateComponent,
+                        canActivate: [AuthGuard]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        path: 'headmasters',
+        children: [
+            {
+                path: '',
+                title: 'SchoolSystem | Headmasters',
+                component: HeadmasterListComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: HeadmasterDetailsComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'update',
+                        component: HeadmasterUpdateComponent,
+                        title: 'SchoolSystem | Update Headmaster',
+                        canActivate: [AuthGuard]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        path: 'students',
+        children: [
+            {
+                path: '',
+                title: 'SchoolSystem | Students',
+                component: StudentListComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: StudentDetailsComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'update',
+                        title: 'SchoolSystem | Update Student',
+                        component: StudentUpdateComponent,
+                        canActivate: [AuthGuard]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        path: 'teachers',
+        children: [
+            {
+                path: '',
+                title: 'SchoolSystem | Teachers',
+                component: TeacherListComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: TeacherDetailsComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'update',
+                        title: 'SchoolSystem | Update Teacher',
+                        component: TeacherUpdateComponent,
+                        canActivate: [AuthGuard]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        path: 'parents',
+        children: [
+            {
+                path: '',
+                title: 'SchoolSystem | Parents',
+                component: ParentListComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: ParentDetailsComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'update',
+                        title: 'SchoolSystem | Update Parent',
+                        component: ParentUpdateComponent,
                         canActivate: [AuthGuard]
                     }
                 ]
