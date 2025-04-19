@@ -1,0 +1,19 @@
+<mat-card class="teacher" appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>
+            {{ teacher.name }} {{ teacher.middleName }} {{ teacher.surname }}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        {{ teacher.username }}    
+    </mat-card-content>
+    <mat-card-content>
+        {{ teacher.email }}
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="button-row">
+        <button mat-flat-button color="primary" (click)="updateTeacher()">Update Teacher</button>
+        <button mat-flat-button color="accent" (click)="deleteTeacher()">Delete Teacher</button>
+        </div>
+    </mat-card-actions>
+</mat-card>
