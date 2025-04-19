@@ -1,0 +1,19 @@
+<mat-card class="headmaster" appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>
+            {{ headmaster.name }} {{ headmaster.middleName }} {{ headmaster.surname }}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        {{ headmaster.username }}    
+    </mat-card-content>
+    <mat-card-content>
+        {{ headmaster.email }}
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="button-row">
+        <button mat-flat-button color="primary" (click)="updateHeadmaster()">Update Headmaster</button>
+        <button mat-flat-button color="accent" (click)="deleteHeadmaster()">Delete Headmaster</button>
+        </div>
+    </mat-card-actions>
+</mat-card>
