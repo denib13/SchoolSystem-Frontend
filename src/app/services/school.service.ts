@@ -32,4 +32,11 @@ export class SchoolService {
     public deleteSchool(id: string) {
         return this.http.delete(this.schoolUrl + `${id}`);
     }
+
+    public getGradesBySchool(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                                .append("pageNo", pageNo)
+                                .append("pageSize", pageSize);
+        return this.http.get<any>(this.schoolUrl + `${id}/grades`, { params: queryParams });
+    }
 }

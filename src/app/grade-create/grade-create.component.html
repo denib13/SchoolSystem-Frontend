@@ -1,0 +1,22 @@
+<form class="form-container" [formGroup]="gradeForm">
+    <h1>Create Grade</h1>
+    <mat-form-field>
+        <mat-label>Year</mat-label>
+        <mat-select formControlName="year">
+            <mat-option *ngFor="let year of years" [value]="year">
+                {{ year }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field >
+        <mat-label>Group</mat-label>
+        <mat-select formControlName="group">
+            <mat-option *ngFor="let group of groups" [value]="group">
+                {{ group }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" [disabled]="!gradeForm.valid" (click)="createGrade()">Create</button>
+</form>

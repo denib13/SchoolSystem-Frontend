@@ -1,0 +1,14 @@
+<mat-card class="grade" appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>
+            {{ grade.year }} {{ grade.group }}
+        </mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-actions>
+        <div class="button-row">
+        <button mat-flat-button color="primary" (click)="updateGrade()">Update Grade</button>
+        <button mat-flat-button color="accent" (click)="deleteGrade()">Delete Grade</button>
+        </div>
+    </mat-card-actions>
+</mat-card>

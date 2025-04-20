@@ -40,4 +40,12 @@ export class SchoolDetailsComponent implements OnInit {
     this.schoolService.deleteSchool(this.id).subscribe();
     this.router.navigate(['schools']);
   }
+
+  createGrade() {
+    this.router.navigate([`./createGrade`], { relativeTo: this.activatedRoute });
+  }
+
+  getGrades() {
+    this.router.navigate([`./grades`], { relativeTo: this.activatedRoute });
+  }
 }
