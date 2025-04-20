@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../../material/material.module';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GradeService } from '../services/grade.service';
+import { GradeService } from '../../services/grade.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../material/material.module';
-import { GradeService } from '../services/grade.service';
-import { Grade } from '../models/grade';
+import { MaterialModule } from '../../material/material.module';
+import { GradeService } from '../../services/grade.service';
+import { Grade } from '../../models/grade';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 

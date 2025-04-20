@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../material/material.module';
-import { SchoolService } from '../services/school.service';
-import { Grade } from '../models/grade';
-import { School } from '../models/school';
+import { MaterialModule } from '../../material/material.module';
+import { SchoolService } from '../../services/school.service';
+import { Grade } from '../../models/grade';
+import { School } from '../../models/school';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 

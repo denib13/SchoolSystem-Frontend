@@ -18,10 +18,11 @@ import { TeacherUpdateComponent } from './teacher/teacher-update/teacher-update.
 import { ParentListComponent } from './parent/parent-list/parent-list.component';
 import { ParentDetailsComponent } from './parent/parent-details/parent-details.component';
 import { ParentUpdateComponent } from './parent/parent-update/parent-update.component';
-import { GradeCreateComponent } from './grade-create/grade-create.component';
-import { GradeListComponent } from './grade-list/grade-list.component';
-import { GradeDetailsComponent } from './grade-details/grade-details.component';
-import { GradeUpdateComponent } from './grade-update/grade-update.component';
+import { GradeCreateComponent } from './grade/grade-create/grade-create.component';
+import { GradeListComponent } from './grade/grade-list/grade-list.component';
+import { GradeDetailsComponent } from './grade/grade-details/grade-details.component';
+import { GradeUpdateComponent } from './grade/grade-update/grade-update.component';
+import { SchoolAddStudentsComponent } from './school/school-add-students/school-add-students.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -53,6 +54,11 @@ export const routes: Routes = [
                         path: 'update',
                         title: 'SchoolSystem | Update School',
                         component: SchoolUpdateComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'addStudents',
+                        component: SchoolAddStudentsComponent,
                         canActivate: [AuthGuard]
                     },
                     {
