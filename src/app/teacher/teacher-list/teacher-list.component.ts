@@ -34,6 +34,7 @@ export class TeacherListComponent implements OnInit {
 		this.teacherService.getTeachers(this.pageNo, this.pageSize).subscribe((data) => {
 			this.teachers = data.content;
 			this.totalItems = data.totalElements;
+			console.log(this.teachers);
 		});
 	}
 

@@ -23,6 +23,7 @@ import { GradeListComponent } from './grade/grade-list/grade-list.component';
 import { GradeDetailsComponent } from './grade/grade-details/grade-details.component';
 import { GradeUpdateComponent } from './grade/grade-update/grade-update.component';
 import { SchoolAddStudentsComponent } from './school/school-add-students/school-add-students.component';
+import { SchoolAddTeachersComponent } from './school/school-add-teachers/school-add-teachers.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -59,6 +60,11 @@ export const routes: Routes = [
                     {
                         path: 'addStudents',
                         component: SchoolAddStudentsComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'addTeachers',
+                        component: SchoolAddTeachersComponent,
                         canActivate: [AuthGuard]
                     },
                     {

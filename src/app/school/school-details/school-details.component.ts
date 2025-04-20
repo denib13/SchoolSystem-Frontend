@@ -52,4 +52,8 @@ export class SchoolDetailsComponent implements OnInit {
   addStudents() {
     this.router.navigate([`./addStudents`], { relativeTo: this.activatedRoute });
   }
+
+  addTeachers() {
+    this.router.navigate([`./addTeachers`], { relativeTo: this.activatedRoute });
+  }
 }
