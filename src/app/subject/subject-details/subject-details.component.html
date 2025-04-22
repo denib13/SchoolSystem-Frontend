@@ -1,0 +1,22 @@
+<mat-card class="subject" appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>
+            {{ subject.name }}
+        </mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+        Semester: {{ subject.semester }}
+    </mat-card-content>
+
+    <mat-card-content>
+        Teacher: {{ subject.teacher?.name }} {{ subject.teacher?.surname }}
+    </mat-card-content>
+
+    <mat-card-actions>
+        <div class="button-row">
+        <button mat-flat-button color="primary" (click)="updateSubject()">Update Subject</button>
+        <button mat-flat-button color="accent" (click)="deleteSubject()">Delete Subject</button>
+        </div>
+    </mat-card-actions>
+</mat-card>

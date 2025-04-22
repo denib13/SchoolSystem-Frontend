@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Grade } from '../models/grade';
@@ -25,5 +25,12 @@ export class GradeService {
 
     public deleteGrade(id: string) {
         return this.http.delete(this.gradeUrl + `${id}`);
+    }
+
+    public getSubjectsByGrade(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                                .append("pageNo", pageNo)
+                                .append("pageSize", pageSize);
+        return this.http.get<any>(this.gradeUrl + `${id}/subjects`, { params: queryParams });
     }
 }

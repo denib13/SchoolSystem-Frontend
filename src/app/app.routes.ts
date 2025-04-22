@@ -24,7 +24,10 @@ import { GradeDetailsComponent } from './grade/grade-details/grade-details.compo
 import { GradeUpdateComponent } from './grade/grade-update/grade-update.component';
 import { SchoolAddStudentsComponent } from './school/school-add-students/school-add-students.component';
 import { SchoolAddTeachersComponent } from './school/school-add-teachers/school-add-teachers.component';
-import { SubjectCreateComponent } from './subject-create/subject-create.component';
+import { SubjectCreateComponent } from './subject/subject-create/subject-create.component';
+import { SubjectListComponent } from './subject/subject-list/subject-list.component';
+import { SubjectDetailsComponent } from './subject/subject-details/subject-details.component';
+import { SubjectUpdateComponent } from './subject/subject-update/subject-update.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -206,9 +209,31 @@ export const routes: Routes = [
             }, 
             {
                 path: 'createSubject',
+                title: 'SchoolSystem | Create Subject',
                 component: SubjectCreateComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'subjects',
+                component: SubjectListComponent,
                 canActivate: [AuthGuard]
             }
         ]
-    }    
+    }, 
+    {
+        path: 'subjects/:id',
+        children: [
+            {
+                path: '',
+                component: SubjectDetailsComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'update',
+                title: 'SchoolSystem | Update Subject',
+                component: SubjectUpdateComponent,
+                canActivate: [AuthGuard]
+            }
+        ]
+    }
 ];

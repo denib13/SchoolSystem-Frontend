@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../material/material.module';
-import { SubjectService } from '../services/subject.service';
+import { MaterialModule } from '../../material/material.module';
+import { SubjectService } from '../../services/subject.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Grade } from '../models/grade';
-import { Teacher } from '../models/teacher';
-import { TeacherService } from '../services/teacher.service';
-import { GradeService } from '../services/grade.service';
-import { SchoolService } from '../services/school.service';
+import { Grade } from '../../models/grade';
+import { Teacher } from '../../models/teacher';
+import { TeacherService } from '../../services/teacher.service';
+import { GradeService } from '../../services/grade.service';
+import { SchoolService } from '../../services/school.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

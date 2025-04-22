@@ -1,0 +1,28 @@
+<form class="form-container" [formGroup]="subjectForm">
+    <h1>Update Subject</h1>
+
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" class="form-control" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Semester</mat-label>
+        <mat-select formControlName="semester">
+            <mat-option *ngFor="let semester of semesters" [value]="semester">
+                {{ semester }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field >
+        <mat-label>Teacher</mat-label>
+        <mat-select formControlName="teacher">
+            <mat-option *ngFor="let teacher of teachers" [value]="teacher.id">
+                {{ teacher.name }} {{ teacher.surname }} {{ teacher.username }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" [disabled]="!subjectForm.valid" (click)="updateSubject()">Update</button>
+</form>
