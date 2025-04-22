@@ -24,6 +24,7 @@ import { GradeDetailsComponent } from './grade/grade-details/grade-details.compo
 import { GradeUpdateComponent } from './grade/grade-update/grade-update.component';
 import { SchoolAddStudentsComponent } from './school/school-add-students/school-add-students.component';
 import { SchoolAddTeachersComponent } from './school/school-add-teachers/school-add-teachers.component';
+import { SubjectCreateComponent } from './subject-create/subject-create.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -201,6 +202,11 @@ export const routes: Routes = [
                 path: 'update',
                 title: 'SchoolSystem | Update Grade',
                 component: GradeUpdateComponent,
+                canActivate: [AuthGuard]
+            }, 
+            {
+                path: 'createSubject',
+                component: SubjectCreateComponent,
                 canActivate: [AuthGuard]
             }
         ]

@@ -43,4 +43,8 @@ export class GradeDetailsComponent implements OnInit {
 		this.gradeService.deleteGrade(this.id).subscribe();
 		this.router.navigate(['schools']);
 	}
+
+	addSubject() {
+		this.router.navigate([`./createSubject`], { relativeTo: this.activatedRoute });
+	}
 }

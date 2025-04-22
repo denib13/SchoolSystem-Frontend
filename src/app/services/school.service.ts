@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { School } from '../models/school';
+import { Teacher } from '../models/teacher';
 
 @Injectable()
 export class SchoolService {
@@ -38,5 +39,9 @@ export class SchoolService {
                                 .append("pageNo", pageNo)
                                 .append("pageSize", pageSize);
         return this.http.get<any>(this.schoolUrl + `${id}/grades`, { params: queryParams });
+    }
+
+    public getTeachersBySchool(id: string): Observable<any> {
+        return this.http.get<any>(this.schoolUrl + `${id}/teachers`);
     }
 }
