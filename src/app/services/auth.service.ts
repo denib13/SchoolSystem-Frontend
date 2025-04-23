@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthRequest } from '../models/authRequest';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +21,25 @@ export class AuthService {
     localStorage.setItem(this.tokenKey, token);
   }
 
+  setUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
 
+  getCurrentUser(): any {
+    const userJson = localStorage.getItem('user');
+    return userJson ? JSON.parse(userJson) : null;
+  }
+
   clearToken() {
     localStorage.removeItem(this.tokenKey);
+  }
+
+  clearUser() {
+    localStorage.removeItem('user');
   }
 
   isAuthenticated(): boolean {
@@ -35,6 +49,7 @@ export class AuthService {
 
   logout() {
     this.clearToken();
+    this.clearUser();
     this.router.navigate(['auth/login']);
   }
 

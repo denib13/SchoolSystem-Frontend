@@ -43,4 +43,8 @@ export class StudentDetailsComponent implements OnInit {
 		this.studentService.deleteStudent(this.id).subscribe();
 		this.router.navigate([`students`]);
 	}
+
+	getMarks() {
+		this.router.navigate([`./marks`], { relativeTo: this.activatedRoute });
+	}
 }

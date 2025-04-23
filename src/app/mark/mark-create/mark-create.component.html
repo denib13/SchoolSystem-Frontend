@@ -1,0 +1,23 @@
+<form class="form-container" [formGroup]="markForm">
+    <h1>Create Mark</h1>
+
+    <mat-form-field>
+        <mat-label>Value</mat-label>
+        <mat-select formControlName="value">
+            <mat-option *ngFor="let value of values" [value]="value">
+                {{ value }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field >
+        <mat-label>Student</mat-label>
+        <mat-select formControlName="student">
+            <mat-option *ngFor="let student of students" [value]="student.id">
+                {{ student.name }} {{ student.surname }} {{ student.username }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" [disabled]="!markForm.valid" (click)="createMark()">Create</button>
+</form>

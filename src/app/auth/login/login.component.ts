@@ -26,6 +26,7 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe((data) => {
       console.log(data);
       this.authService.setToken(data.token);
+      this.authService.setUser(data.user);
       this.router.navigate(['/']);
     }, (error: HttpErrorResponse) => {
       console.log(error.error.errors);

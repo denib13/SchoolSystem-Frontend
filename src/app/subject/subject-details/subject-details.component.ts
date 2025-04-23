@@ -44,4 +44,12 @@ export class SubjectDetailsComponent implements OnInit {
 		this.subjectService.deleteSubject(this.id).subscribe();
 		this.router.navigate([`schools`]);
 	}
+
+	createMark() {
+		this.router.navigate([`./createMark`], { relativeTo: this.activatedRoute });
+	}
+
+	getMarks() {
+		this.router.navigate([`./marks`], { relativeTo: this.activatedRoute });
+	}
 }

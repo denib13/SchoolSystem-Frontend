@@ -29,4 +29,11 @@ export class StudentService {
     public deleteStudent(id: string) {
         return this.http.delete(this.studentUrl + `${id}`);
     }
+
+    public getMarksByStudent(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                                .append("pageNo", pageNo)
+                                .append("pageSize", pageSize);
+        return this.http.get<any>(this.studentUrl + `${id}/marks`, { params: queryParams });
+    }
 }

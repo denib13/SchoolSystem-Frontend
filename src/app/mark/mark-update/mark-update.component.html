@@ -1,0 +1,14 @@
+<form class="form-container" [formGroup]="markForm">
+    <h1>Create Mark</h1>
+
+    <mat-form-field>
+        <mat-label>Value</mat-label>
+        <mat-select formControlName="value">
+            <mat-option *ngFor="let value of values" [value]="value">
+                {{ value }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" [disabled]="!markForm.valid" (click)="updateMark()">Update</button>
+</form>

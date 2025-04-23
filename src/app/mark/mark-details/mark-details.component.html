@@ -1,0 +1,34 @@
+<mat-card class="mark" appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>
+            {{ mark.value }}
+        </mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+        Value: {{ mark.value }}
+    </mat-card-content>
+
+    <mat-card-content>
+        Teacher: {{ mark.teacher?.name }} {{ mark.teacher?.surname }}
+    </mat-card-content>
+
+    <mat-card-content>
+        Student: {{ mark.student?.name }} {{ mark.student?.surname }}
+    </mat-card-content>
+
+    <mat-card-content>
+        Subject: {{ mark.subject?.name }}
+    </mat-card-content>
+
+    <mat-card-content>
+        Date: {{ mark.createdAt }}
+    </mat-card-content>
+
+    <mat-card-actions>
+        <div class="button-row">
+        <button mat-flat-button color="primary" (click)="updateMark()">Update Mark</button>
+        <button mat-flat-button color="accent" (click)="deleteMark()">Delete Mark</button>
+        </div>
+    </mat-card-actions>
+</mat-card>

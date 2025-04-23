@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Grade } from '../models/grade';
+import { Student } from '../models/student';
 
 @Injectable()
 export class GradeService {
@@ -32,5 +33,9 @@ export class GradeService {
                                 .append("pageNo", pageNo)
                                 .append("pageSize", pageSize);
         return this.http.get<any>(this.gradeUrl + `${id}/subjects`, { params: queryParams });
+    }
+
+    public getStudentsByGrade(id: string): Observable<Student[]> {
+        return this.http.get<Student[]>(this.gradeUrl + `${id}/students`);
     }
 }

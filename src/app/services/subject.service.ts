@@ -33,4 +33,11 @@ export class SubjectService {
     public deleteSubject(id: string) {
         return this.http.delete(this.subjectUrl + `${id}`);
     }
+
+    public getMarksBySubject(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                                .append("pageNo", pageNo)
+                                .append("pageSize", pageSize);
+        return this.http.get<any>(this.subjectUrl + `${id}/marks`, { params: queryParams });
+    }
 }

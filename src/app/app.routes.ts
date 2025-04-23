@@ -28,6 +28,11 @@ import { SubjectCreateComponent } from './subject/subject-create/subject-create.
 import { SubjectListComponent } from './subject/subject-list/subject-list.component';
 import { SubjectDetailsComponent } from './subject/subject-details/subject-details.component';
 import { SubjectUpdateComponent } from './subject/subject-update/subject-update.component';
+import { MarkCreateComponent } from './mark/mark-create/mark-create.component';
+import { MarkListComponent } from './mark/mark-list/mark-list.component';
+import { StudentMarkListComponent } from './student/student-mark-list/student-mark-list.component';
+import { MarkDetailsComponent } from './mark/mark-details/mark-details.component';
+import { MarkUpdateComponent } from './mark/mark-update/mark-update.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -134,6 +139,11 @@ export const routes: Routes = [
                         title: 'SchoolSystem | Update Student',
                         component: StudentUpdateComponent,
                         canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'marks',
+                        component: StudentMarkListComponent,
+                        canActivate: [AuthGuard]
                     }
                 ]
             }
@@ -232,6 +242,32 @@ export const routes: Routes = [
                 path: 'update',
                 title: 'SchoolSystem | Update Subject',
                 component: SubjectUpdateComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'createMark',
+                component: MarkCreateComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'marks',
+                component: MarkListComponent,
+                canActivate: [AuthGuard]
+            }
+        ]
+    },
+    {
+        path: 'marks/:id',
+        children: [
+            {
+                path: '',
+                component: MarkDetailsComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'update',
+                title: 'SchoolSystem | Update Mark',
+                component: MarkUpdateComponent,
                 canActivate: [AuthGuard]
             }
         ]
