@@ -1,0 +1,15 @@
+<form class="form-container" [formGroup]="remarkForm">
+    <h1>Create Remark</h1>
+
+    <mat-form-field>
+        <mat-label>Heading</mat-label>
+        <input matInput formControlName="heading" class="form-control" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Body</mat-label>
+        <input matInput formControlName="body" class="form-control">
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" [disabled]="!remarkForm.valid" (click)="updateRemark()">Update</button>
+</form>

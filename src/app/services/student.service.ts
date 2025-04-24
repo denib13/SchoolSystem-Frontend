@@ -36,4 +36,11 @@ export class StudentService {
                                 .append("pageSize", pageSize);
         return this.http.get<any>(this.studentUrl + `${id}/marks`, { params: queryParams });
     }
+
+    public getRemarksByStudent(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                                .append("pageNo", pageNo)
+                                .append("pageSize", pageSize);
+        return this.http.get<any>(this.studentUrl + `${id}/remarks`, { params: queryParams });
+    }
 }

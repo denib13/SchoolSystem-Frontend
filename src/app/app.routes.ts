@@ -33,6 +33,11 @@ import { MarkListComponent } from './mark/mark-list/mark-list.component';
 import { StudentMarkListComponent } from './student/student-mark-list/student-mark-list.component';
 import { MarkDetailsComponent } from './mark/mark-details/mark-details.component';
 import { MarkUpdateComponent } from './mark/mark-update/mark-update.component';
+import { RemarkCreateComponent } from './remark/remark-create/remark-create.component';
+import { RemarkListComponent } from './remark/remark-list/remark-list.component';
+import { StudentRemarkListComponent } from './student/student-remark-list/student-remark-list.component';
+import { RemarkDetailsComponent } from './remark/remark-details/remark-details.component';
+import { RemarkUpdateComponent } from './remark/remark-update/remark-update.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -144,6 +149,11 @@ export const routes: Routes = [
                         path: 'marks',
                         component: StudentMarkListComponent,
                         canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'remarks',
+                        component: StudentRemarkListComponent,
+                        canActivate: [AuthGuard]
                     }
                 ]
             }
@@ -246,12 +256,26 @@ export const routes: Routes = [
             },
             {
                 path: 'createMark',
+                title: 'SchoolSystem | Create Mark',
                 component: MarkCreateComponent,
                 canActivate: [AuthGuard]
             },
             {
                 path: 'marks',
+                title: 'SchoolSystem | Marks',
                 component: MarkListComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'remarks',
+                title: 'SchoolSystem | Remarks',
+                component: RemarkListComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'createRemark',
+                title: 'SchoolSystem | Create Remark',
+                component: RemarkCreateComponent,
                 canActivate: [AuthGuard]
             }
         ]
@@ -268,6 +292,22 @@ export const routes: Routes = [
                 path: 'update',
                 title: 'SchoolSystem | Update Mark',
                 component: MarkUpdateComponent,
+                canActivate: [AuthGuard]
+            }
+        ]
+    },
+    {
+        path: 'remarks/:id',
+        children: [
+            {
+                path: '',
+                component: RemarkDetailsComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'update',
+                title: 'SchoolSystem | Update Remark',
+                component: RemarkUpdateComponent,
                 canActivate: [AuthGuard]
             }
         ]

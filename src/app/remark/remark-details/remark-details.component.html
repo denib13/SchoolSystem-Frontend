@@ -1,0 +1,34 @@
+<mat-card class="remark" appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>
+            {{ remark.heading }}
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        Teacher: {{ remark.teacher?.name }} {{ remark.teacher?.surname }}
+    </mat-card-content>
+
+    <mat-card-content>
+        Student: {{ remark.student?.name }} {{ remark.student?.surname }}
+    </mat-card-content>
+
+    <mat-card-content>
+        Subject: {{ remark.subject?.name }}
+    </mat-card-content>
+
+    <mat-card-content>
+        Date: {{ remark.createdAt }}
+    </mat-card-content>
+
+    <mat-card-content>
+        Body: {{ remark.body }}
+    </mat-card-content>
+
+    <mat-card-actions>
+        <div class="button-row">
+        <button mat-flat-button color="primary" (click)="updateRemark()">Update Remark</button>
+        <button mat-flat-button color="accent" (click)="deleteRemark()">Delete Remark</button>
+        </div>
+    </mat-card-actions>
+</mat-card>

@@ -40,4 +40,11 @@ export class SubjectService {
                                 .append("pageSize", pageSize);
         return this.http.get<any>(this.subjectUrl + `${id}/marks`, { params: queryParams });
     }
+
+    public getRemarksBySubject(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                                .append("pageNo", pageNo)
+                                .append("pageSize", pageSize);
+        return this.http.get<any>(this.subjectUrl + `${id}/remarks`, { params: queryParams });
+    }
 }
