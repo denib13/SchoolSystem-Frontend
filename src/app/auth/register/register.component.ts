@@ -39,6 +39,7 @@ export class RegisterComponent {
 			console.log(data);
 			this.authService.setToken(data.token);
       		this.authService.setUser(data.user);
+			this.authService.setRole(data.user);
       		this.router.navigate(['/']);
 		}, (error: HttpErrorResponse) => {
 			console.log(error.error.errors);

@@ -25,6 +25,10 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  setRole(user: User) {
+    localStorage.setItem('role', user.role || '');
+  }
+
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
@@ -32,6 +36,10 @@ export class AuthService {
   getCurrentUser(): any {
     const userJson = localStorage.getItem('user');
     return userJson ? JSON.parse(userJson) : null;
+  }
+
+  getRole(): string {
+    return localStorage.getItem('role') || '';
   }
 
   clearToken() {
@@ -42,6 +50,10 @@ export class AuthService {
     localStorage.removeItem('user');
   }
 
+  clearRole() {
+    localStorage.removeItem('role');
+  }
+
   isAuthenticated(): boolean {
     const token = this.getToken();
     return !!token;
@@ -50,6 +62,7 @@ export class AuthService {
   logout() {
     this.clearToken();
     this.clearUser();
+    this.clearRole();
     this.router.navigate(['auth/login']);
   }
 

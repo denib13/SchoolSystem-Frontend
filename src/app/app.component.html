@@ -1,13 +1,23 @@
-<router-outlet>
-  <mat-toolbar>
+<mat-toolbar>
   <button mat-button color="accent" routerLink="">Home</button>
-  <button mat-button color="accent" [matMenuTriggerFor]="menu">Login</button>
-  <mat-menu #menu="matMenu" color="accent">
+
+  <button mat-button color="accent" [matMenuTriggerFor]="authMenu">Auth</button>
+  <mat-menu #authMenu="matMenu" color="accent">
     <button mat-menu-item routerLink="auth/login">Login</button>
+    <button mat-menu-item routerLink="auth/register">Register</button>
     <button mat-menu-item *ngIf="authService.isAuthenticated()" (click)="logout()">Logout</button>
   </mat-menu>
-  </mat-toolbar>
-  <main>
-    <h1 *ngIf="authService.isAuthenticated()">🎉 Welcome back!</h1>
-  </main>
-</router-outlet>
+  
+  <button mat-button color="accent" [matMenuTriggerFor]="schoolsMenu">Schools</button>
+  <mat-menu #schoolsMenu="matMenu" color="accent">
+    <button mat-menu-item routerLink="schools">Schools</button>
+    <button mat-menu-item routerLink="schools/create">Create School</button>
+  </mat-menu>
+
+  <button mat-button color="accent" routerLink="students">Students</button>
+  <button mat-button color="accent" routerLink="teachers">Teachers</button>
+  <button mat-button color="accent" routerLink="parents">Parents</button>
+  <button mat-button color="accent" routerLink="headmasters">Headmasters</button>
+
+</mat-toolbar>
+<router-outlet></router-outlet>

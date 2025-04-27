@@ -56,11 +56,14 @@ import { StudentParentListComponent } from './student/student-parent-list/studen
 import { ParentChildrenListComponent } from './parent/parent-children-list/parent-children-list.component';
 import { SchoolAddHeadmasterComponent } from './school/school-add-headmaster/school-add-headmaster.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
     { path: 'auth/register', component: RegisterComponent },
-    { path: '', component: AppComponent, canActivate: [AuthGuard] },
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { 
         path: 'schools',
         children: [
