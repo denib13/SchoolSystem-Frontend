@@ -4,6 +4,10 @@
             {{ grade.year }} {{ grade.group }}
         </mat-card-title>
     </mat-card-header>
+
+    <mat-card-content>
+        School: {{ grade.school?.name || '' }}
+    </mat-card-content>
     
     <mat-card-actions>
         <div class="button-row">
@@ -15,5 +19,10 @@
     <mat-card-actions>
         <button mat-flat-button color="primary" (click)="addSubject()">Add Subject</button>
         <button mat-flat-button color="primary" (click)="getSubjects()">View Subjects</button>
+    </mat-card-actions>
+
+    <mat-card-actions>
+        <button mat-flat-button color="primary" (click)="addStudents()">Add Students</button>
+        <button mat-flat-button color="primary" (click)="getStudents()">Students</button>
     </mat-card-actions>
 </mat-card>

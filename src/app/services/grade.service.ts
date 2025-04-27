@@ -38,4 +38,11 @@ export class GradeService {
     public getStudentsByGrade(id: string): Observable<Student[]> {
         return this.http.get<Student[]>(this.gradeUrl + `${id}/students`);
     }
+
+    public getStudentsPageByGrade(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                                .append("pageNo", pageNo)
+                                .append("pageSize", pageSize);
+        return this.http.get<any>(this.gradeUrl + `${id}/studentsPage`, { params: queryParams });
+    }
 }

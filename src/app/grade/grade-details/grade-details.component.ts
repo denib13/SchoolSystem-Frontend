@@ -51,4 +51,12 @@ export class GradeDetailsComponent implements OnInit {
 	getSubjects() {
 		this.router.navigate([`./subjects`], { relativeTo: this.activatedRoute });
 	}
+
+	addStudents() {
+		this.router.navigate([`./addStudents`], { relativeTo: this.activatedRoute });
+	}
+
+	getStudents() {
+		this.router.navigate([`./students`], { relativeTo: this.activatedRoute });
+	}
 }
