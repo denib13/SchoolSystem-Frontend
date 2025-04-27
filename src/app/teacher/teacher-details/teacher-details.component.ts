@@ -43,4 +43,24 @@ export class TeacherDetailsComponent implements OnInit {
 		this.teacherService.deleteTeacher(this.id).subscribe();
 		this.router.navigate([`teachers`]);
 	}
+
+	getSchools() {
+		this.router.navigate([`./schools`], { relativeTo: this.activatedRoute });
+	}
+
+	getSubjects() {
+		this.router.navigate([`./subjects`], { relativeTo: this.activatedRoute });
+	}
+
+	getMarks() {
+		this.router.navigate([`./marks`], { relativeTo: this.activatedRoute });
+	}
+
+	getRemarks() {
+		this.router.navigate([`./remarks`], { relativeTo: this.activatedRoute });
+	}
+
+	getAbsences() {
+		this.router.navigate([`./absences`], { relativeTo: this.activatedRoute });
+	}
 }

@@ -1,4 +1,5 @@
 import { School } from "./school";
+import { Subject } from "./subject";
 
 export interface Teacher {
     id?: string,
@@ -9,5 +10,6 @@ export interface Teacher {
     username?: string,
     password?: string,
     email?: string,
-    schools?: School[] 
+    schools?: School[],
+    subjects?: Subject[]
 }

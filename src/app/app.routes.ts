@@ -42,6 +42,11 @@ import { AbsenceListComponent } from './absence/absence-list/absence-list.compon
 import { AbsenceCreateComponent } from './absence/absence-create/absence-create.component';
 import { StudentAbsenceListComponent } from './student/student-absence-list/student-absence-list.component';
 import { AbsenceDetailsComponent } from './absence/absence-details/absence-details.component';
+import { TeacherSchoolsListComponent } from './teacher/teacher-schools-list/teacher-schools-list.component';
+import { TeacherSubjectListComponent } from './teacher/teacher-subject-list/teacher-subject-list.component';
+import { TeacherMarkListComponent } from './teacher/teacher-mark-list/teacher-mark-list.component';
+import { TeacherRemarkListComponent } from './teacher/teacher-remark-list/teacher-remark-list.component';
+import { TeacherAbsenceListComponent } from './teacher/teacher-absence-list/teacher-absence-list.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -189,6 +194,31 @@ export const routes: Routes = [
                         path: 'update',
                         title: 'SchoolSystem | Update Teacher',
                         component: TeacherUpdateComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'schools',
+                        component: TeacherSchoolsListComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'subjects',
+                        component: TeacherSubjectListComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'marks',
+                        component: TeacherMarkListComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'remarks',
+                        component: TeacherRemarkListComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'absences',
+                        component: TeacherAbsenceListComponent,
                         canActivate: [AuthGuard]
                     }
                 ]

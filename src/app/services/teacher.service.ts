@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class TeacherService {
     private teacherUrl: string;
-    
+
     constructor(private http: HttpClient) {
         this.teacherUrl = 'http://localhost:8080/api/teachers/';
     }
@@ -28,5 +28,40 @@ export class TeacherService {
 
     public deleteTeacher(id: string) {
         return this.http.delete(this.teacherUrl + `${id}`);
+    }
+
+    public getTeacherSchools(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                            .append("pageNo", pageNo)
+                            .append("pageSize", pageSize);
+        return this.http.get<any>(this.teacherUrl + `${id}/schools`, { params: queryParams });
+    }
+
+    public getTeacherSubjects(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                            .append("pageNo", pageNo)
+                            .append("pageSize", pageSize);
+        return this.http.get<any>(this.teacherUrl + `${id}/subjects`, { params: queryParams });
+    }
+
+    public getTeacherMarks(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                            .append("pageNo", pageNo)
+                            .append("pageSize", pageSize);
+        return this.http.get<any>(this.teacherUrl + `${id}/marks`, { params: queryParams });
+    }
+
+    public getTeacherRemarks(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                            .append("pageNo", pageNo)
+                            .append("pageSize", pageSize);
+        return this.http.get<any>(this.teacherUrl + `${id}/remarks`, { params: queryParams });
+    }
+
+    public getTeacherAbsences(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                            .append("pageNo", pageNo)
+                            .append("pageSize", pageSize);
+        return this.http.get<any>(this.teacherUrl + `${id}/absences`, { params: queryParams });
     }
 }
