@@ -1,3 +1,5 @@
+import { Student } from "./student";
+
 export interface Parent { 
     id?: string,
     name?: string,
@@ -6,5 +8,6 @@ export interface Parent {
     nationalIdNumber?: string,
     username?: string,
     password?: string, 
-    email?: string
+    email?: string,
+    children?: Student[]
 }

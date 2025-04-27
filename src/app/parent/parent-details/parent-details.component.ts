@@ -43,4 +43,8 @@ export class ParentDetailsComponent implements OnInit {
 		this.parentService.deleteParent(this.id).subscribe();
 		this.router.navigate([`parents`]);
 	}
+
+	getChildren() {
+		this.router.navigate([`./children`], { relativeTo: this.activatedRoute });
+	}
 }

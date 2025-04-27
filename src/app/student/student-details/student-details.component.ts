@@ -55,4 +55,12 @@ export class StudentDetailsComponent implements OnInit {
 	getAbsences() {
 		this.router.navigate([`./absences`], { relativeTo: this.activatedRoute });
 	}
+
+	addParents() {
+		this.router.navigate([`./addParents`], { relativeTo: this.activatedRoute });
+	}
+
+	getParents() {
+		this.router.navigate([`./parents`], { relativeTo: this.activatedRoute });
+	}
 }

@@ -5,11 +5,20 @@
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        {{ student.username }}    
+        Username: {{ student.username }}    
     </mat-card-content>
     <mat-card-content>
-        {{ student.email }}
+        Email: {{ student.email }}
     </mat-card-content>
+
+    <mat-card-content>
+        School: {{ student.school?.name || '' }}
+    </mat-card-content>
+
+    <mat-card-content>
+        School Class: {{ student.schoolClass?.year || '' }} {{ student.schoolClass?.group || '' }}
+    </mat-card-content>
+
     <mat-card-actions>
         <div class="button-row">
         <button mat-flat-button color="primary" (click)="updateStudent()">Update Student</button>
@@ -22,6 +31,13 @@
         <button mat-flat-button color="primary" (click)="getMarks()">Marks</button>
         <button mat-flat-button color="primary" (click)="getRemarks()">Remarks</button>
         <button mat-flat-button color="primary" (click)="getAbsences()">Absences</button>
+        </div>
+    </mat-card-actions>
+
+    <mat-card-actions>
+        <div class="button-row">
+        <button mat-flat-button color="primary" (click)="addParents()">Add Parents</button>
+        <button mat-flat-button color="primary" (click)="getParents()">Parents</button>
         </div>
     </mat-card-actions>
 </mat-card>

@@ -1,37 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../material/material.module';
-import { StudentService } from '../../services/student.service';
+import { ParentService } from '../../services/parent.service';
 import { Student } from '../../models/student';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-student-list',
+  selector: 'app-parent-children-list',
   standalone: true,
   imports: [ MaterialModule ],
-  providers: [ StudentService ],
-  templateUrl: './student-list.component.html',
-  styleUrl: './student-list.component.css'
+  providers: [ ParentService ],
+  templateUrl: './parent-children-list.component.html',
+  styleUrl: './parent-children-list.component.css'
 })
-export class StudentListComponent implements OnInit {
+export class ParentChildrenListComponent implements OnInit {
 	displayedColumns: string[] = ['name', 'surname', 'username', 'details'];
 	students: Student[] = [];
+	parentId!: string;
 
 	pageNo: number = 0;
 	pageSize: number = 5;
 	totalItems: number = 0;
 
 	constructor(
-		private studentService: StudentService,
+		private parentService: ParentService,
+		private activatedRoute: ActivatedRoute,
 		private router: Router
 	) {}
 
 	ngOnInit(): void {
-		this.loadStudents();
+		this.parentId = this.activatedRoute.snapshot.params['id'];
+		this.loadChildren();
 	}
 
-	loadStudents() {
-		this.studentService.getStudents(this.pageNo, this.pageSize).subscribe((data) => {
+	loadChildren() {
+		this.parentService.getChildren(this.parentId, this.pageNo, this.pageSize).subscribe((data) => {
 			this.students = data.content;
 			this.totalItems = data.totalElements;
 		});
@@ -40,7 +43,7 @@ export class StudentListComponent implements OnInit {
 	getPageData(event: PageEvent) {
 		this.pageNo = event.pageIndex;
 		this.pageSize = event.pageSize;
-		this.loadStudents();
+		this.loadChildren();
 	}
 
 	viewDetails(id: string) {

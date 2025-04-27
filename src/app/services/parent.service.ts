@@ -29,4 +29,11 @@ export class ParentService {
     public deleteParent(id: string) {
         return this.http.delete(this.parentUrl + `${id}`);
     }
+
+    public getChildren(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                                .append("pageNo", pageNo)
+                                .append("pageSize", pageSize);
+        return this.http.get<any>(this.parentUrl + `${id}/children`, { params: queryParams });
+    }
 }
