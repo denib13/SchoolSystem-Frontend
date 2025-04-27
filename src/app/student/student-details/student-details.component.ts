@@ -51,4 +51,8 @@ export class StudentDetailsComponent implements OnInit {
 	getRemarks() {
 		this.router.navigate([`./remarks`], { relativeTo: this.activatedRoute });
 	}
+
+	getAbsences() {
+		this.router.navigate([`./absences`], { relativeTo: this.activatedRoute });
+	}
 }

@@ -1,0 +1,25 @@
+<mat-card class="absence" appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>
+           Date: {{ absence.createdAt }}
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        Teacher: {{ absence.teacher?.name }} {{ absence.teacher?.surname }}
+    </mat-card-content>
+
+    <mat-card-content>
+        Student: {{ absence.student?.name }} {{ absence.student?.surname }}
+    </mat-card-content>
+
+    <mat-card-content>
+        Subject: {{ absence.subject?.name }}
+    </mat-card-content>
+
+    <mat-card-actions>
+        <div class="button-row">
+        <button mat-flat-button color="accent" (click)="deleteAbsence()">Delete Absence</button>
+        </div>
+    </mat-card-actions>
+</mat-card>

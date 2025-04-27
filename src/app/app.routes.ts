@@ -38,6 +38,10 @@ import { RemarkListComponent } from './remark/remark-list/remark-list.component'
 import { StudentRemarkListComponent } from './student/student-remark-list/student-remark-list.component';
 import { RemarkDetailsComponent } from './remark/remark-details/remark-details.component';
 import { RemarkUpdateComponent } from './remark/remark-update/remark-update.component';
+import { AbsenceListComponent } from './absence/absence-list/absence-list.component';
+import { AbsenceCreateComponent } from './absence/absence-create/absence-create.component';
+import { StudentAbsenceListComponent } from './student/student-absence-list/student-absence-list.component';
+import { AbsenceDetailsComponent } from './absence/absence-details/absence-details.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -153,6 +157,11 @@ export const routes: Routes = [
                     {
                         path: 'remarks',
                         component: StudentRemarkListComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'absences',
+                        component: StudentAbsenceListComponent,
                         canActivate: [AuthGuard]
                     }
                 ]
@@ -277,6 +286,18 @@ export const routes: Routes = [
                 title: 'SchoolSystem | Create Remark',
                 component: RemarkCreateComponent,
                 canActivate: [AuthGuard]
+            },
+            {
+                path: 'absences',
+                title: 'SchoolSystem | Absences',
+                component: AbsenceListComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'createAbsence',
+                title: 'SchoolSystem | Create Absence',
+                component: AbsenceCreateComponent,
+                canActivate: [AuthGuard]
             }
         ]
     },
@@ -311,5 +332,10 @@ export const routes: Routes = [
                 canActivate: [AuthGuard]
             }
         ]
+    },
+    {
+        path: 'absences/:id',
+        component: AbsenceDetailsComponent,
+        canActivate: [AuthGuard]
     }
 ];

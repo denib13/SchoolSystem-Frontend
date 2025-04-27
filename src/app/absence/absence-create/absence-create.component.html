@@ -1,0 +1,14 @@
+<form class="form-container" [formGroup]="absenceForm">
+    <h1>Create Absence</h1>
+
+    <mat-form-field >
+        <mat-label>Student</mat-label>
+        <mat-select formControlName="student">
+            <mat-option *ngFor="let student of students" [value]="student.id">
+                {{ student.name }} {{ student.surname }} {{ student.username }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" [disabled]="!absenceForm.valid" (click)="createAbsence()">Create</button>
+</form>

@@ -60,4 +60,12 @@ export class SubjectDetailsComponent implements OnInit {
 	getRemarks() {
 		this.router.navigate([`./remarks`], { relativeTo: this.activatedRoute });
 	}
+
+	createAbsence() {
+		this.router.navigate([`./createAbsence`], { relativeTo: this.activatedRoute });
+	}
+
+	getAbsences() {
+		this.router.navigate([`./absences`], { relativeTo: this.activatedRoute });
+	}
 }
