@@ -47,6 +47,14 @@ import { TeacherSubjectListComponent } from './teacher/teacher-subject-list/teac
 import { TeacherMarkListComponent } from './teacher/teacher-mark-list/teacher-mark-list.component';
 import { TeacherRemarkListComponent } from './teacher/teacher-remark-list/teacher-remark-list.component';
 import { TeacherAbsenceListComponent } from './teacher/teacher-absence-list/teacher-absence-list.component';
+import { GradeAddStudentComponent } from './grade/grade-add-student/grade-add-student.component';
+import { GradeStudentsListComponent } from './grade/grade-students-list/grade-students-list.component';
+import { SchoolStudentListComponent } from './school/school-student-list/school-student-list.component';
+import { SchoolTeacherListComponent } from './school/school-teacher-list/school-teacher-list.component';
+import { StudentAddParentComponent } from './student/student-add-parent/student-add-parent.component';
+import { StudentParentListComponent } from './student/student-parent-list/student-parent-list.component';
+import { ParentChildrenListComponent } from './parent/parent-children-list/parent-children-list.component';
+import { SchoolAddHeadmasterComponent } from './school/school-add-headmaster/school-add-headmaster.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -98,6 +106,21 @@ export const routes: Routes = [
                     {
                         path: 'createGrade',
                         component: GradeCreateComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'students',
+                        component: SchoolStudentListComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'teachers',
+                        component: SchoolTeacherListComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'addHeadmaster',
+                        component: SchoolAddHeadmasterComponent,
                         canActivate: [AuthGuard]
                     }
                 ]
@@ -167,6 +190,16 @@ export const routes: Routes = [
                     {
                         path: 'absences',
                         component: StudentAbsenceListComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'addParents',
+                        component: StudentAddParentComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'parents',
+                        component: StudentParentListComponent,
                         canActivate: [AuthGuard]
                     }
                 ]
@@ -247,6 +280,11 @@ export const routes: Routes = [
                         title: 'SchoolSystem | Update Parent',
                         component: ParentUpdateComponent,
                         canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'children',
+                        component: ParentChildrenListComponent,
+                        canActivate: [AuthGuard]
                     }
                 ]
             }
@@ -275,6 +313,16 @@ export const routes: Routes = [
             {
                 path: 'subjects',
                 component: SubjectListComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'addStudents',
+                component: GradeAddStudentComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'students',
+                component: GradeStudentsListComponent,
                 canActivate: [AuthGuard]
             }
         ]

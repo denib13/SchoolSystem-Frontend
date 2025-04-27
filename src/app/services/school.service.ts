@@ -44,4 +44,18 @@ export class SchoolService {
     public getTeachersBySchool(id: string): Observable<any> {
         return this.http.get<any>(this.schoolUrl + `${id}/teachers`);
     }
+
+    public getTeachersPageBySchool(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                                .append("pageNo", pageNo)
+                                .append("pageSize", pageSize);
+        return this.http.get<any>(this.schoolUrl + `${id}/teachersPage`, { params: queryParams });
+    }
+
+    public getStudentsBySchool(id: string, pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams()
+                                .append("pageNo", pageNo)
+                                .append("pageSize", pageSize);
+        return this.http.get<any>(this.schoolUrl + `${id}/students`, { params: queryParams });
+    }
 }

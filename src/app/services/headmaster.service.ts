@@ -28,4 +28,10 @@ export class HeadmasterService {
     public deleteHeadmaster(id: string) {
         return this.http.delete(this.headmasterUrl + `${id}`);
     }
+
+    public getUnassignedHeadmasters(pageNo: number, pageSize: number): Observable<any> {
+        let queryParams = new HttpParams().append("pageNo", pageNo)
+                                        .append("pageSize", pageSize);
+        return this.http.get<any>(this.headmasterUrl + `unassigned`, { params: queryParams });
+    }
 }

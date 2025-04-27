@@ -6,6 +6,9 @@
     </mat-card-header>
     <mat-card-content>{{ school.city }}</mat-card-content>
     <mat-card-actions>
+        <button mat-flat-button color="primary" (click)="addHeadmaster()">Add Headmaster</button>
+    </mat-card-actions>
+    <mat-card-actions>
         <div class="button-row">
         <button mat-flat-button color="primary" (click)="updateSchool()">Update School</button>
         <button mat-flat-button color="accent" (click)="deleteSchool()">Delete School</button>
@@ -14,7 +17,15 @@
     <mat-card-actions>
         <button mat-flat-button color="primary" (click)="createGrade()">Create Grade</button>
         <button mat-flat-button color="primary" (click)="getGrades()">View Grades</button>
+    </mat-card-actions>
+
+    <mat-card-actions>
         <button mat-flat-button color="primary" (click)="addStudents()">Add Students</button>
+        <button mat-flat-button color="primary" (click)="getStudents()">Students</button>
+    </mat-card-actions>
+
+    <mat-card-actions>
         <button mat-flat-button color="primary" (click)="addTeachers()">Add Teachers</button>
+        <button mat-flat-button color="primary" (click)="getTeachers()">Teachers</button>
     </mat-card-actions>
 </mat-card>
