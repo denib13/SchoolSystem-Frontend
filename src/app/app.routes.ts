@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
-import { AuthGuard } from './auth/login/auth.guard';
+import { AuthGuard } from './auth/auth.guard';
 import { AppComponent } from './app.component';
 import { SchoolListComponent } from './school/school-list/school-list.component';
 import { SchoolDetailsComponent } from './school/school-details/school-details.component';
@@ -55,9 +55,11 @@ import { StudentAddParentComponent } from './student/student-add-parent/student-
 import { StudentParentListComponent } from './student/student-parent-list/student-parent-list.component';
 import { ParentChildrenListComponent } from './parent/parent-children-list/parent-children-list.component';
 import { SchoolAddHeadmasterComponent } from './school/school-add-headmaster/school-add-headmaster.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
+    { path: 'auth/register', component: RegisterComponent },
     { path: '', component: AppComponent, canActivate: [AuthGuard] },
     { 
         path: 'schools',

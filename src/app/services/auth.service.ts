@@ -14,7 +14,7 @@ export class AuthService {
   private tokenKey = 'authToken';
 
   constructor(private http: HttpClient, private router: Router) { 
-    this.authUrl = 'http://localhost:8080/api/auth/login';
+    this.authUrl = 'http://localhost:8080/api/auth/';
   }
 
   setToken(token: string) {
@@ -54,7 +54,7 @@ export class AuthService {
   }
 
   public login(request: AuthRequest) {
-    return this.http.post<any>(this.authUrl, request);
+    return this.http.post<any>(this.authUrl + `login`, request);
       // .subscribe({
       //   next: (res) => {
       //     this.setToken(res.token);
@@ -64,5 +64,9 @@ export class AuthService {
       //     this.error = 'Invalid credentials';
       //   }
       // });
+  }
+
+  public register(request: any) {
+    return this.http.post<any>(this.authUrl + `register`, request);
   }
 }

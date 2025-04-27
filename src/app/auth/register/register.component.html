@@ -1,0 +1,47 @@
+<form class="form-container" [formGroup]="registerForm">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" class="form-control" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Middle Name</mat-label>
+        <input matInput formControlName="middleName" class="form-control" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Surname</mat-label>
+        <input matInput formControlName="surname" class="form-control" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>National Id Number</mat-label>
+        <input matInput formControlName="nationalIdNumber" class="form-control" required>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" class="form-control" required>
+    </mat-form-field>
+
+    <mat-form-field >
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" class="form-control" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="type">
+            <mat-option *ngFor="let role of roles" [value]="role">
+                {{ role }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" [disabled]="!registerForm.valid" (click)="register()">Register</button>
+</form>
