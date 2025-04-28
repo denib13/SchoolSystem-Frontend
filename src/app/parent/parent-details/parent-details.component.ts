@@ -4,12 +4,14 @@ import { ParentService } from '../../services/parent.service';
 import { Parent } from '../../models/parent';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-parent-details',
   standalone: true,
-  imports: [ MaterialModule ],
-  providers: [ ParentService ],
+  imports: [ MaterialModule, NgIf ],
+  providers: [ ParentService, AuthService ],
   templateUrl: './parent-details.component.html',
   styleUrl: './parent-details.component.css'
 })
@@ -19,6 +21,7 @@ export class ParentDetailsComponent implements OnInit {
 
 	constructor(
 		private parentService: ParentService,
+		private authService: AuthService,
 		private activatedRoute: ActivatedRoute,
 		private router: Router
 	) {
@@ -33,6 +36,21 @@ export class ParentDetailsComponent implements OnInit {
 			console.log(error.error.message);
       		this.router.navigate([`**`]);
 		});
+	}
+
+	isAuthorized() {
+		const role: string = this.authService.getRole();
+		return role === 'parent' || role === 'admin';
+	}
+
+	isAuthorizedToUpdate() {
+		const role: string = this.authService.getRole();
+		return role === 'parent' || role === 'admin';
+	}
+
+	isAuthorizedToDelete() {
+		const role: string = this.authService.getRole();
+		return role === 'admin';
 	}
 
 	updateParent() {

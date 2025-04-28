@@ -58,8 +58,10 @@ import { SchoolAddHeadmasterComponent } from './school/school-add-headmaster/sch
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 export const routes: Routes = [
+    { path: 'forbidden', component: ForbiddenComponent },
     { path: 'auth/login', component: LoginComponent },
     { path: 'auth/register', component: RegisterComponent },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
@@ -71,13 +73,15 @@ export const routes: Routes = [
                 path: '',
                 title: 'SchoolSystem | Schools',
                 component: SchoolListComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['admin', 'headmaster'] }
             },
             {
                 path: 'create',
                 title: 'SchoolSystem | Create School',
                 component: SchoolCreateComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['admin'] }
             },
             {
                 path: ':id',
@@ -91,17 +95,20 @@ export const routes: Routes = [
                         path: 'update',
                         title: 'SchoolSystem | Update School',
                         component: SchoolUpdateComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster'] }
                     },
                     {
                         path: 'addStudents',
                         component: SchoolAddStudentsComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster'] }
                     },
                     {
                         path: 'addTeachers',
                         component: SchoolAddTeachersComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster'] }
                     },
                     {
                         path: 'grades',
@@ -111,22 +118,26 @@ export const routes: Routes = [
                     {
                         path: 'createGrade',
                         component: GradeCreateComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster'] }
                     },
                     {
                         path: 'students',
                         component: SchoolStudentListComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster', 'teacher'] }
                     },
                     {
                         path: 'teachers',
                         component: SchoolTeacherListComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster', 'teacher'] }
                     },
                     {
                         path: 'addHeadmaster',
                         component: SchoolAddHeadmasterComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin'] }
                     }
                 ]
             }
@@ -139,7 +150,8 @@ export const routes: Routes = [
                 path: '',
                 title: 'SchoolSystem | Headmasters',
                 component: HeadmasterListComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['headmaster', 'admin'] }
             },
             {
                 path: ':id',
@@ -153,7 +165,8 @@ export const routes: Routes = [
                         path: 'update',
                         component: HeadmasterUpdateComponent,
                         title: 'SchoolSystem | Update Headmaster',
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['headmaster', 'admin'] }
                     }
                 ]
             }
@@ -166,7 +179,8 @@ export const routes: Routes = [
                 path: '',
                 title: 'SchoolSystem | Students',
                 component: StudentListComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['admin'] }
             },
             {
                 path: ':id',
@@ -180,7 +194,8 @@ export const routes: Routes = [
                         path: 'update',
                         title: 'SchoolSystem | Update Student',
                         component: StudentUpdateComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster', 'student'] }
                     },
                     {
                         path: 'marks',
@@ -200,7 +215,8 @@ export const routes: Routes = [
                     {
                         path: 'addParents',
                         component: StudentAddParentComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster'] }
                     },
                     {
                         path: 'parents',
@@ -218,7 +234,8 @@ export const routes: Routes = [
                 path: '',
                 title: 'SchoolSystem | Teachers',
                 component: TeacherListComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['admin'] }
             },
             {
                 path: ':id',
@@ -232,12 +249,14 @@ export const routes: Routes = [
                         path: 'update',
                         title: 'SchoolSystem | Update Teacher',
                         component: TeacherUpdateComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster', 'teacher'] }
                     },
                     {
                         path: 'schools',
                         component: TeacherSchoolsListComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster', 'teacher'] }
                     },
                     {
                         path: 'subjects',
@@ -247,17 +266,20 @@ export const routes: Routes = [
                     {
                         path: 'marks',
                         component: TeacherMarkListComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster', 'teacher'] }
                     },
                     {
                         path: 'remarks',
                         component: TeacherRemarkListComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster', 'teacher'] }
                     },
                     {
                         path: 'absences',
                         component: TeacherAbsenceListComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['admin', 'headmaster', 'teacher'] }
                     }
                 ]
             }
@@ -270,7 +292,8 @@ export const routes: Routes = [
                 path: '',
                 title: 'SchoolSystem | Parents',
                 component: ParentListComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['admin'] }
             },
             {
                 path: ':id',
@@ -284,7 +307,8 @@ export const routes: Routes = [
                         path: 'update',
                         title: 'SchoolSystem | Update Parent',
                         component: ParentUpdateComponent,
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        data: { allowedRoles: ['parent', 'admin'] }
                     },
                     {
                         path: 'children',
@@ -307,13 +331,15 @@ export const routes: Routes = [
                 path: 'update',
                 title: 'SchoolSystem | Update Grade',
                 component: GradeUpdateComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['admin', 'headmaster'] }
             }, 
             {
                 path: 'createSubject',
                 title: 'SchoolSystem | Create Subject',
                 component: SubjectCreateComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['admin', 'headmaster'] }
             },
             {
                 path: 'subjects',
@@ -323,7 +349,8 @@ export const routes: Routes = [
             {
                 path: 'addStudents',
                 component: GradeAddStudentComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['headmaster', 'admin'] }
             },
             {
                 path: 'students',
@@ -344,13 +371,15 @@ export const routes: Routes = [
                 path: 'update',
                 title: 'SchoolSystem | Update Subject',
                 component: SubjectUpdateComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['admin', 'headmaster'] }
             },
             {
                 path: 'createMark',
                 title: 'SchoolSystem | Create Mark',
                 component: MarkCreateComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['teacher'] }
             },
             {
                 path: 'marks',
@@ -368,7 +397,8 @@ export const routes: Routes = [
                 path: 'createRemark',
                 title: 'SchoolSystem | Create Remark',
                 component: RemarkCreateComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['teacher'] }
             },
             {
                 path: 'absences',
@@ -380,7 +410,8 @@ export const routes: Routes = [
                 path: 'createAbsence',
                 title: 'SchoolSystem | Create Absence',
                 component: AbsenceCreateComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['teacher'] }
             }
         ]
     },
@@ -396,7 +427,8 @@ export const routes: Routes = [
                 path: 'update',
                 title: 'SchoolSystem | Update Mark',
                 component: MarkUpdateComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['teacher', 'admin', 'headmaster'] }
             }
         ]
     },
@@ -412,7 +444,8 @@ export const routes: Routes = [
                 path: 'update',
                 title: 'SchoolSystem | Update Remark',
                 component: RemarkUpdateComponent,
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: { allowedRoles: ['teacher', 'admin', 'headmaster'] }
             }
         ]
     },

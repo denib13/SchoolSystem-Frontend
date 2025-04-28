@@ -4,12 +4,14 @@ import { HeadmasterService } from '../../services/headmaster.service';
 import { Headmaster } from '../../models/headmaster';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgIf } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-headmaster-details',
   standalone: true,
-  imports: [ MaterialModule ],
-  providers: [ HeadmasterService ],
+  imports: [ MaterialModule, NgIf ],
+  providers: [ HeadmasterService, AuthService ],
   templateUrl: './headmaster-details.component.html',
   styleUrl: './headmaster-details.component.css'
 })
@@ -19,6 +21,7 @@ export class HeadmasterDetailsComponent implements OnInit {
 
   constructor(
     private headmasterService: HeadmasterService, 
+    private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -33,6 +36,21 @@ export class HeadmasterDetailsComponent implements OnInit {
       console.log(error.error.message);
       this.router.navigate([`**`]);
     });
+  }
+
+  isAuthorized() {
+    const role: string = this.authService.getRole();
+    return role === 'admin' || role === 'headmaster';
+  }
+
+  isAuthorizedToUpdate() {
+    const role: string = this.authService.getRole();
+    return role === 'admin' || role === 'headmaster';
+  }
+
+  isAuthorizedToDelete() {
+    const role: string = this.authService.getRole();
+    return role === 'admin';
   }
 
   updateHeadmaster() {

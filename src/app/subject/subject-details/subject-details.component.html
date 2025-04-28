@@ -17,28 +17,28 @@
         Teacher: {{ subject.teacher?.name }} {{ subject.teacher?.surname }}
     </mat-card-content>
 
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthorizedToModify()">
         <div class="button-row">
         <button mat-flat-button color="primary" (click)="updateSubject()">Update Subject</button>
         <button mat-flat-button color="accent" (click)="deleteSubject()">Delete Subject</button>
         </div>
     </mat-card-actions>
 
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthorizedToAddMarkRemarkAbsence()">
         <div class="button-row">
         <button mat-flat-button color="primary" (click)="createMark()">Create Mark</button>
         <button mat-flat-button color="primary" (click)="getMarks()">Marks</button>
         </div>
     </mat-card-actions>
 
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthorizedToAddMarkRemarkAbsence()">
         <div class="button-row">
         <button mat-flat-button color="primary" (click)="createRemark()">Create Remark</button>
         <button mat-flat-button color="primary" (click)="getRemarks()">Remarks</button>
         </div>
     </mat-card-actions>
 
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthorizedToAddMarkRemarkAbsence()">
         <div class="button-row">
         <button mat-flat-button color="primary" (click)="createAbsence()">Create Absence</button>
         <button mat-flat-button color="primary" (click)="getAbsences()">Absences</button>

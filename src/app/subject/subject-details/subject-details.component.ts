@@ -4,12 +4,14 @@ import { SubjectService } from '../../services/subject.service';
 import { Subject } from '../../models/subject';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgIf } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-subject-details',
   standalone: true,
-  imports: [ MaterialModule ],
-  providers: [ SubjectService ],
+  imports: [ MaterialModule, NgIf ],
+  providers: [ SubjectService, AuthService ],
   templateUrl: './subject-details.component.html',
   styleUrl: './subject-details.component.css'
 })
@@ -19,6 +21,7 @@ export class SubjectDetailsComponent implements OnInit {
 
 	constructor(
 		private subjectService: SubjectService,
+		private authService: AuthService,
 		private activatedRoute: ActivatedRoute,
 		private router: Router
 	) {
@@ -34,6 +37,16 @@ export class SubjectDetailsComponent implements OnInit {
 			console.log(error.error.message);
 			this.router.navigate([`schools`]);
 		});
+	}
+
+	isAuthorizedToModify() {
+		const role: string = this.authService.getRole();
+		return role === 'admin' || role === 'headmaster';
+	}
+
+	isAuthorizedToAddMarkRemarkAbsence() {
+		const role: string = this.authService.getRole();
+		return role === 'admin' || role === 'headmaster' || role === 'teacher';	
 	}
 
 	updateSubject() {

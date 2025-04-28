@@ -4,12 +4,14 @@ import { GradeService } from '../../services/grade.service';
 import { Grade } from '../../models/grade';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-grade-details',
   standalone: true,
-  imports: [ MaterialModule ],
-  providers: [ GradeService ],
+  imports: [ MaterialModule, NgIf ],
+  providers: [ GradeService, AuthService ],
   templateUrl: './grade-details.component.html',
   styleUrl: './grade-details.component.css'
 })
@@ -19,6 +21,7 @@ export class GradeDetailsComponent implements OnInit {
 
 	constructor(
 		private gradeService: GradeService,
+		private authService: AuthService,
 		private activatedRoute: ActivatedRoute,
 		private router: Router
 	) {
@@ -33,6 +36,11 @@ export class GradeDetailsComponent implements OnInit {
 			console.log(error.error.message);
 			this.router.navigate([`schools`]);
 		});
+	}
+
+	isAuthorized() {
+		const role: string = this.authService.getRole();
+		return role === 'headmaster' || role === 'admin';
 	}
 
 	updateGrade() {

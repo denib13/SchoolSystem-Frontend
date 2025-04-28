@@ -8,16 +8,18 @@
     <button mat-menu-item *ngIf="authService.isAuthenticated()" (click)="logout()">Logout</button>
   </mat-menu>
   
-  <button mat-button color="accent" [matMenuTriggerFor]="schoolsMenu">Schools</button>
+  <button mat-button color="accent" *ngIf="authService.isAuthenticated()" routerLink="profile">Profile</button>
+
+  <button mat-button color="accent" *ngIf="authService.isAuthenticated() && getUserRole() === 'admin'" [matMenuTriggerFor]="schoolsMenu">Schools</button>
   <mat-menu #schoolsMenu="matMenu" color="accent">
     <button mat-menu-item routerLink="schools">Schools</button>
     <button mat-menu-item routerLink="schools/create">Create School</button>
   </mat-menu>
 
-  <button mat-button color="accent" routerLink="students">Students</button>
-  <button mat-button color="accent" routerLink="teachers">Teachers</button>
-  <button mat-button color="accent" routerLink="parents">Parents</button>
-  <button mat-button color="accent" routerLink="headmasters">Headmasters</button>
+  <button mat-button color="accent" *ngIf="authService.isAuthenticated() && getUserRole() === 'admin'" routerLink="students">Students</button>
+  <button mat-button color="accent" *ngIf="authService.isAuthenticated() && getUserRole() === 'admin'" routerLink="teachers">Teachers</button>
+  <button mat-button color="accent" *ngIf="authService.isAuthenticated() && getUserRole() === 'admin'" routerLink="parents">Parents</button>
+  <button mat-button color="accent" *ngIf="authService.isAuthenticated() && getUserRole() === 'admin'" routerLink="headmasters">Headmasters</button>
 
 </mat-toolbar>
 <router-outlet></router-outlet>

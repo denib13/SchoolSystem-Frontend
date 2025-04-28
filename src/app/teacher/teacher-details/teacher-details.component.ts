@@ -4,12 +4,14 @@ import { TeacherService } from '../../services/teacher.service';
 import { Teacher } from '../../models/teacher';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgIf } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-teacher-details',
   standalone: true,
-  imports: [ MaterialModule ],
-  providers: [ TeacherService ],
+  imports: [ MaterialModule, NgIf ],
+  providers: [ TeacherService, AuthService ],
   templateUrl: './teacher-details.component.html',
   styleUrl: './teacher-details.component.css'
 })
@@ -19,6 +21,7 @@ export class TeacherDetailsComponent implements OnInit {
 
 	constructor(
 		private teacherService: TeacherService,
+		private authService: AuthService,
 		private activatedRoute: ActivatedRoute,
 		private router: Router
 	) {
@@ -33,6 +36,31 @@ export class TeacherDetailsComponent implements OnInit {
 			console.log(error.error.message);
       		this.router.navigate([`**`]);
 		});
+	}
+
+	isAuthorized() {
+		const role: string = this.authService.getRole();
+		return role === 'admin' || role === 'headmaster' || role === 'teacher';
+	}
+
+	isAuthorizedToUpdate() {
+		const role: string = this.authService.getRole();
+		return role === 'admin' || role === 'headmaster' || role === 'teacher';
+	}
+
+	isAuthorizedToDelete() {
+		const role: string = this.authService.getRole();
+		return role === 'admin';
+	}
+
+	isAuthorizedToReadSchools() {
+		const role: string = this.authService.getRole();
+		return role === 'admin' || role === 'headmaster' || role === 'teacher';
+	}
+
+	isAuthorizedToReadMarksRemarksAbsences() {
+		const role: string = this.authService.getRole();
+		return role === 'admin' || role === 'headmaster' || role === 'teacher';
 	}
 
 	updateTeacher() {

@@ -9,7 +9,7 @@
         School: {{ grade.school?.name || '' }}
     </mat-card-content>
     
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthorized()">
         <div class="button-row">
         <button mat-flat-button color="primary" (click)="updateGrade()">Update Grade</button>
         <button mat-flat-button color="accent" (click)="deleteGrade()">Delete Grade</button>
@@ -17,12 +17,12 @@
     </mat-card-actions>
 
     <mat-card-actions>
-        <button mat-flat-button color="primary" (click)="addSubject()">Add Subject</button>
+        <button *ngIf="isAuthorized()" mat-flat-button color="primary" (click)="addSubject()">Add Subject</button>
         <button mat-flat-button color="primary" (click)="getSubjects()">View Subjects</button>
     </mat-card-actions>
 
     <mat-card-actions>
-        <button mat-flat-button color="primary" (click)="addStudents()">Add Students</button>
+        <button *ngIf="isAuthorized()" mat-flat-button color="primary" (click)="addStudents()">Add Students</button>
         <button mat-flat-button color="primary" (click)="getStudents()">Students</button>
     </mat-card-actions>
 </mat-card>

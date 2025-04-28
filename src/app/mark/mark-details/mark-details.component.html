@@ -25,7 +25,7 @@
         Date: {{ mark.createdAt }}
     </mat-card-content>
 
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthorized()">
         <div class="button-row">
         <button mat-flat-button color="primary" (click)="updateMark()">Update Mark</button>
         <button mat-flat-button color="accent" (click)="deleteMark()">Delete Mark</button>

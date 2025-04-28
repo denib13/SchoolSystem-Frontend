@@ -10,10 +10,10 @@
     <mat-card-content>
         {{ parent.email }}
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthorized()">
         <div class="button-row">
-        <button mat-flat-button color="primary" (click)="updateParent()">Update Parent</button>
-        <button mat-flat-button color="accent" (click)="deleteParent()">Delete Parent</button>
+        <button *ngIf="isAuthorizedToUpdate()" mat-flat-button color="primary" (click)="updateParent()">Update Parent</button>
+        <button *ngIf="isAuthorizedToDelete()" mat-flat-button color="accent" (click)="deleteParent()">Delete Parent</button>
         </div>
     </mat-card-actions>
 

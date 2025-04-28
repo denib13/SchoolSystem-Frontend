@@ -17,7 +17,7 @@
         Subject: {{ absence.subject?.name }}
     </mat-card-content>
 
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthorized()">
         <div class="button-row">
         <button mat-flat-button color="accent" (click)="deleteAbsence()">Delete Absence</button>
         </div>

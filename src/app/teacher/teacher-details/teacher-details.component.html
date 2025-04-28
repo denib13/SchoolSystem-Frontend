@@ -10,21 +10,21 @@
     <mat-card-content>
         {{ teacher.email }}
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthorized()">
         <div class="button-row">
-        <button mat-flat-button color="primary" (click)="updateTeacher()">Update Teacher</button>
-        <button mat-flat-button color="accent" (click)="deleteTeacher()">Delete Teacher</button>
+        <button *ngIf="isAuthorizedToUpdate()" mat-flat-button color="primary" (click)="updateTeacher()">Update Teacher</button>
+        <button *ngIf="isAuthorizedToDelete()" mat-flat-button color="accent" (click)="deleteTeacher()">Delete Teacher</button>
         </div>
     </mat-card-actions>
 
     <mat-card-actions>
         <div class="button-row">
-        <button mat-flat-button color="primary" (click)="getSchools()">Schools</button>
+        <button *ngIf="isAuthorizedToReadSchools()" mat-flat-button color="primary" (click)="getSchools()">Schools</button>
         <button mat-flat-button color="primary" (click)="getSubjects()">Subjects</button>
         </div>
     </mat-card-actions>
 
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthorizedToReadMarksRemarksAbsences()">
         <div class="button-row">
         <button mat-flat-button color="primary" (click)="getMarks()">Created Marks</button>
         <button mat-flat-button color="primary" (click)="getRemarks()">Created Remarks</button>

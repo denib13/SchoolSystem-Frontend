@@ -25,7 +25,7 @@
         Body: {{ remark.body }}
     </mat-card-content>
 
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthorized()">
         <div class="button-row">
         <button mat-flat-button color="primary" (click)="updateRemark()">Update Remark</button>
         <button mat-flat-button color="accent" (click)="deleteRemark()">Delete Remark</button>

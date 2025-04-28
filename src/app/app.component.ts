@@ -18,6 +18,10 @@ export class AppComponent {
 
   constructor(public authService: AuthService) {}
 
+  getUserRole() {
+    return this.authService.getRole();
+  }
+
   logout() {
     this.authService.logout();
   }

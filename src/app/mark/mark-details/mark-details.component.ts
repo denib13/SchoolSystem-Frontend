@@ -4,13 +4,14 @@ import { MarkService } from '../../services/mark.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Mark } from '../../models/mark';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Location } from '@angular/common';
+import { Location, NgIf } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-mark-details',
   standalone: true,
-  imports: [ MaterialModule ],
-  providers: [ MarkService ],
+  imports: [ MaterialModule, NgIf ],
+  providers: [ MarkService, AuthService ],
   templateUrl: './mark-details.component.html',
   styleUrl: './mark-details.component.css'
 })
@@ -20,6 +21,7 @@ export class MarkDetailsComponent implements OnInit {
 
 	constructor(
 		private markService: MarkService,
+		private authService: AuthService,
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private location: Location
@@ -35,6 +37,11 @@ export class MarkDetailsComponent implements OnInit {
 			console.log(error.error.message);
 			this.location.back();
 		});
+	}
+
+	isAuthorized() {
+		const role: string = this.authService.getRole();
+		return role === 'admin' || role === 'headmaster' || role === 'teacher';
 	}
 
 	updateMark() {

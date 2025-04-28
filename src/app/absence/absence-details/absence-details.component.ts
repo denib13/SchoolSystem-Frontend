@@ -3,14 +3,15 @@ import { MaterialModule } from '../../material/material.module';
 import { AbsenceService } from '../../services/absence.service';
 import { Absence } from '../../models/absence';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Location, NgIf } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-absence-details',
   standalone: true,
-  imports: [ MaterialModule ],
-  providers: [ AbsenceService ],
+  imports: [ MaterialModule, NgIf ],
+  providers: [ AbsenceService, AuthService ],
   templateUrl: './absence-details.component.html',
   styleUrl: './absence-details.component.css'
 })
@@ -20,6 +21,7 @@ export class AbsenceDetailsComponent implements OnInit {
 
 	constructor(
 		private absenceService: AbsenceService,
+		private authService: AuthService,
 		private activatedRoute: ActivatedRoute,
 		private location: Location
 	) {
@@ -34,6 +36,11 @@ export class AbsenceDetailsComponent implements OnInit {
 			console.log(error.error.message);
 			this.location.back();
 		});
+	}
+
+	isAuthorized() {
+		const role: string = this.authService.getRole();
+		return role === 'teacher' || role === 'admin';
 	}
 
 	deleteAbsence() {

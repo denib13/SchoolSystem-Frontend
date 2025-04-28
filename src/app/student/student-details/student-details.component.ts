@@ -4,12 +4,14 @@ import { StudentService } from '../../services/student.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from '../../models/student';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgIf } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-student-details',
   standalone: true,
-  imports: [ MaterialModule ],
-  providers: [ StudentService ],
+  imports: [ MaterialModule, NgIf ],
+  providers: [ StudentService, AuthService ],
   templateUrl: './student-details.component.html',
   styleUrl: './student-details.component.css'
 })
@@ -19,6 +21,7 @@ export class StudentDetailsComponent implements OnInit {
 
 	constructor(
 		private studentService: StudentService,
+		private authService: AuthService,
 		private activatedRoute: ActivatedRoute,
 		private router: Router
 	) {
@@ -33,6 +36,26 @@ export class StudentDetailsComponent implements OnInit {
 			console.log(error.error.message);
 			this.router.navigate([`**`]);
 		});
+	}
+
+	isAuthorized() {
+		const role: string = this.authService.getRole();
+		return role === 'admin' || role === 'student' || role === 'headmaster';
+	}
+
+	isAuthorizedToUpdate() {
+		const role: string = this.authService.getRole();
+		return role === 'admin' || role === 'student' || role === 'headmaster';
+	}
+
+	isAuthorizedToDelete() {
+		const role: string = this.authService.getRole();
+		return role === 'admin' || role === 'headmaster';
+	}
+
+	isAuthorizedToAddParents() {
+		const role: string = this.authService.getRole();
+		return role === 'admin' || role === 'headmaster';
 	}
 
 	updateStudent() {
