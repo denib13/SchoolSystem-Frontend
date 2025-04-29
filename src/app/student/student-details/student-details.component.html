@@ -19,6 +19,14 @@
         School Class: {{ student.schoolClass?.year || '' }} {{ student.schoolClass?.group || '' }}
     </mat-card-content>
 
+    <mat-card-actions *ngIf="hasSchool()">
+        <button mat-flat-button color="primary" (click)="getSchool()">School</button>
+    </mat-card-actions>
+
+    <mat-card-actions *ngIf="hasSchoolClass()">
+        <button mat-flat-button color="primary" (click)="getSchoolClass()">Grade</button>
+    </mat-card-actions>
+
     <mat-card-actions *ngIf="isAuthorized()">
         <div class="button-row">
         <button *ngIf="isAuthorizedToUpdate()" mat-flat-button color="primary" (click)="updateStudent()">Update Student</button>
@@ -32,6 +40,10 @@
         <button mat-flat-button color="primary" (click)="getRemarks()">Remarks</button>
         <button mat-flat-button color="primary" (click)="getAbsences()">Absences</button>
         </div>
+    </mat-card-actions>
+
+    <mat-card-actions>
+        <button mat-flat-button color="primary" (click)="getStatistics()">Statistics</button>
     </mat-card-actions>
 
     <mat-card-actions>

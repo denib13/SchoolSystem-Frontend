@@ -59,6 +59,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { StudentStatisticsComponent } from './student/student-statistics/student-statistics.component';
 
 export const routes: Routes = [
     { path: 'forbidden', component: ForbiddenComponent },
@@ -221,6 +222,11 @@ export const routes: Routes = [
                     {
                         path: 'parents',
                         component: StudentParentListComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path: 'statistics',
+                        component: StudentStatisticsComponent,
                         canActivate: [AuthGuard]
                     }
                 ]

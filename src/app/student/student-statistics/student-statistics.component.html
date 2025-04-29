@@ -1,0 +1,45 @@
+<div *ngIf="marks.length === 0" class="info-message">
+    <p>No data available.</p>
+</div>
+  
+<div *ngIf="marks.length > 0" class="statistics-section"> 
+    <h2> Average Marks by Subject & Semester</h2>
+    <table mat-table [dataSource]="averageMarks" class="mat-elevation-z8 stats-table" *ngIf="averageMarks.data.length > 0">
+  
+      <ng-container matColumnDef="subjectName">
+        <th mat-header-cell *matHeaderCellDef> Subject </th>
+        <td mat-cell *matCellDef="let element"> {{ element.subjectName }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="semester">
+        <th mat-header-cell *matHeaderCellDef> Semester </th>
+        <td mat-cell *matCellDef="let element"> {{ element.semester }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="average">
+        <th mat-header-cell *matHeaderCellDef> Average </th>
+        <td mat-cell *matCellDef="let element"> {{ element.average }} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsAverages"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsAverages;"></tr>
+    </table>
+
+    <h2> Average per Semester</h2>
+    <table mat-table [dataSource]="semesterAverageMarks" class="mat-elevation-z8 stats-table" *ngIf="semesterAverageMarks.data.length > 0">
+  
+      <ng-container matColumnDef="semester">
+        <th mat-header-cell *matHeaderCellDef> Semester </th>
+        <td mat-cell *matCellDef="let element"> {{ element.semester }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="average">
+        <th mat-header-cell *matHeaderCellDef> Average </th>
+        <td mat-cell *matCellDef="let element"> {{ element.average }} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsSemesterAverages"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsSemesterAverages;"></tr>
+    </table>
+</div>
+  

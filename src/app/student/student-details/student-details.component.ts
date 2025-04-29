@@ -86,4 +86,32 @@ export class StudentDetailsComponent implements OnInit {
 	getParents() {
 		this.router.navigate([`./parents`], { relativeTo: this.activatedRoute });
 	}
+
+	hasSchool(): boolean {
+		const schoolId: string = this.student.school?.id || '';
+		return schoolId !== '';
+	}
+
+	getSchool() {
+		if(this.hasSchool()) {
+			const schoolId: string = this.student.school?.id || '';
+			this.router.navigate([`schools/${schoolId}`]);
+		}
+	}
+
+	hasSchoolClass(): boolean {
+		const schoolClassId: string = this.student.schoolClass?.id || '';
+		return schoolClassId !== '';
+	}
+
+	getSchoolClass() {
+		if(this.hasSchoolClass()) {
+			const schoolClassId: string = this.student.schoolClass?.id || '';
+			this.router.navigate([`grades/${schoolClassId}`]);
+		}
+	}
+
+	getStatistics() {
+		this.router.navigate([`./statistics`], { relativeTo: this.activatedRoute });
+	}
 }
