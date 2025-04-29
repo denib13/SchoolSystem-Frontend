@@ -5,6 +5,11 @@
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>{{ school.city }}</mat-card-content>
+
+    <mat-card-actions *ngIf="hasHeadmaster()">
+        <button mat-flat-button color="primary" (click)="getHeadmaster()">Headmaster</button>
+    </mat-card-actions>
+
     <mat-card-actions *ngIf="isAuthorizedToAddHeadmaster()">
         <button mat-flat-button color="primary" (click)="addHeadmaster()">Add Headmaster</button>
     </mat-card-actions>

@@ -81,4 +81,28 @@ export class SubjectDetailsComponent implements OnInit {
 	getAbsences() {
 		this.router.navigate([`./absences`], { relativeTo: this.activatedRoute });
 	}
+
+	hasGrade(): boolean {
+		const gradeId: string = this.subject.schoolClass?.id || '';
+		return gradeId !== '';
+	}
+
+	getGrade() {
+		if(this.hasGrade()) {
+			const gradeId: string = this.subject.schoolClass?.id || '';
+			this.router.navigate([`grades/${gradeId}`]);
+		}
+	}
+
+	hasTeacher(): boolean {
+		const teacherId: string = this.subject.teacher?.id || '';
+		return teacherId !== '';
+	}
+
+	getTeacher() {
+		if(this.hasTeacher()) {
+			const teacherId: string = this.subject.teacher?.id || '';
+			this.router.navigate([`teachers/${teacherId}`]);
+		}
+	}
 }

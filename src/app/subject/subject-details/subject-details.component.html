@@ -17,6 +17,14 @@
         Teacher: {{ subject.teacher?.name }} {{ subject.teacher?.surname }}
     </mat-card-content>
 
+    <mat-card-actions *ngIf="hasGrade()">
+        <button mat-flat-button color="primary" (click)="getGrade()">Grade</button>
+    </mat-card-actions>
+
+    <mat-card-actions *ngIf="hasTeacher()">
+        <button mat-flat-button color="primary" (click)="getTeacher()">Teacher</button>
+    </mat-card-actions>
+
     <mat-card-actions *ngIf="isAuthorizedToModify()">
         <div class="button-row">
         <button mat-flat-button color="primary" (click)="updateSubject()">Update Subject</button>

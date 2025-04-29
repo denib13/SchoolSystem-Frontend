@@ -10,6 +10,11 @@
     <mat-card-content>
         {{ headmaster.email }}
     </mat-card-content>
+
+    <mat-card-actions *ngIf="hasSchool()">
+        <button mat-flat-button color="primary" (click)="getSchool()">School</button>
+    </mat-card-actions>
+
     <mat-card-actions *ngIf="isAuthorized()">
         <div class="button-row">
         <button *ngIf="isAuthorizedToUpdate()" mat-flat-button color="primary" (click)="updateHeadmaster()">Update Headmaster</button>

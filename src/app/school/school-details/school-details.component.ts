@@ -90,4 +90,16 @@ export class SchoolDetailsComponent implements OnInit {
   addHeadmaster() {
     this.router.navigate([`./addHeadmaster`], { relativeTo: this.activatedRoute });
   }
+
+  hasHeadmaster(): boolean {
+    const headmasterId: string = this.school.headmaster?.id || '';
+    return headmasterId !== '';
+  }
+
+  getHeadmaster() {
+    if(this.hasHeadmaster()) {
+      const headmasterId: string = this.school.headmaster?.id || '';
+      this.router.navigate([`headmasters/${headmasterId}`]);
+    }
+  }
 }

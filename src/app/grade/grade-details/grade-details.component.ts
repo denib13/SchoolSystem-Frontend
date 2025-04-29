@@ -67,4 +67,16 @@ export class GradeDetailsComponent implements OnInit {
 	getStudents() {
 		this.router.navigate([`./students`], { relativeTo: this.activatedRoute });
 	}
+
+	hasSchool(): boolean {
+		const schoolId: string = this.grade.school?.id || '';
+		return schoolId !== '';
+	}
+
+	getSchool() {
+		if(this.hasSchool()) {
+			const schoolId: string = this.grade.school?.id || '';
+			this.router.navigate([`schools/${schoolId}`]);
+		}
+	}
 }

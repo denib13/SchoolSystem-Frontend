@@ -61,4 +61,16 @@ export class HeadmasterDetailsComponent implements OnInit {
     this.headmasterService.deleteHeadmaster(this.id).subscribe();
     this.router.navigate(['headmasters']);
   }
+
+  hasSchool(): boolean {
+    const schoolId: string = this.headmaster.school?.id || '';
+    return schoolId !== '';
+  }
+
+  getSchool() {
+    if(this.hasSchool()) {
+      const schoolId: string = this.headmaster.school?.id || '';
+      this.router.navigate([`schools/${schoolId}`]);
+    }
+  }
 }
