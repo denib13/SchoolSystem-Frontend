@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../material/material.module';
 import { SubjectService } from '../../services/subject.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grade } from '../../models/grade';
 import { Teacher } from '../../models/teacher';
@@ -14,14 +14,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-subject-create',
   standalone: true,
-  imports: [ MaterialModule, ReactiveFormsModule, NgFor ],
+  imports: [ MaterialModule, ReactiveFormsModule, NgFor, NgIf ],
   providers: [ SubjectService, GradeService, SchoolService ],
   templateUrl: './subject-create.component.html',
   styleUrl: './subject-create.component.css'
 })
 export class SubjectCreateComponent implements OnInit {
 	subjectForm: FormGroup = this.formBuilder.group({
-		name: ['', Validators.required],
+		name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(32)]],
 		semester: ['', Validators.required],
 		teacher: ['', Validators.required],
 		schoolClass: ['']

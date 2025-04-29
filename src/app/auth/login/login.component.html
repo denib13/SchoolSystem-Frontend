@@ -3,10 +3,28 @@
     <mat-form-field>
         <mat-label>Username</mat-label>
         <input matInput formControlName="username" class="form-control" required>
+        <mat-error *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched">
+            Username is required
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('username')?.hasError('minlength') && loginForm.get('username')?.touched">
+            Username must be at least 4 characters long
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('username')?.hasError('maxlength') && loginForm.get('username')?.touched">
+            Username cannot be more than 25 characters
+          </mat-error>
     </mat-form-field>
     <mat-form-field >
         <mat-label>Password</mat-label>
         <input type="password" matInput formControlName="password">
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched">
+            Password must be at least 5 characters long
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('maxlength') && loginForm.get('password')?.touched">
+            Password cannot be more than 32 characters
+          </mat-error>
     </mat-form-field>
     <button mat-flat-button color="primary" [disabled]="!loginForm.valid" (click)="login()">Login</button>
 </form>

@@ -3,21 +3,57 @@
     <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput formControlName="name" class="form-control" required>
+        <mat-error *ngIf="parentForm.get('name')?.hasError('required') && parentForm.get('name')?.touched">
+            Name is required
+        </mat-error>
+        <mat-error *ngIf="parentForm.get('name')?.hasError('minlength') && parentForm.get('name')?.touched">
+            Name must be at least 2 characters long
+        </mat-error>
+        <mat-error *ngIf="parentForm.get('name')?.hasError('maxlength') && parentForm.get('name')?.touched">
+            Name cannot be more than 50 characters
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Middle Name</mat-label>
         <input matInput formControlName="middleName" class="form-control" required>
+        <mat-error *ngIf="parentForm.get('middleName')?.hasError('required') && parentForm.get('middleName')?.touched">
+            Middle Name is required
+        </mat-error>
+        <mat-error *ngIf="parentForm.get('middleName')?.hasError('minlength') && parentForm.get('middleName')?.touched">
+            Middle Name must be at least 2 characters long
+        </mat-error>
+        <mat-error *ngIf="parentForm.get('middleName')?.hasError('maxlength') && parentForm.get('middleName')?.touched">
+            Middle Name cannot be more than 50 characters
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Surname</mat-label>
         <input matInput formControlName="surname" class="form-control" required>
+        <mat-error *ngIf="parentForm.get('surname')?.hasError('required') && parentForm.get('surname')?.touched">
+            Surname is required
+        </mat-error>
+        <mat-error *ngIf="parentForm.get('surname')?.hasError('minlength') && parentForm.get('surname')?.touched">
+            Surname must be at least 2 characters long
+        </mat-error>
+        <mat-error *ngIf="parentForm.get('surname')?.hasError('maxlength') && parentForm.get('surname')?.touched">
+            Surname cannot be more than 50 characters
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Username</mat-label>
         <input matInput formControlName="username" class="form-control" required>
+        <mat-error *ngIf="parentForm.get('username')?.hasError('required') && parentForm.get('username')?.touched">
+            Username is required
+        </mat-error>
+        <mat-error *ngIf="parentForm.get('username')?.hasError('minlength') && parentForm.get('username')?.touched">
+            Username must be at least 4 characters long
+        </mat-error>
+        <mat-error *ngIf="parentForm.get('username')?.hasError('maxlength') && parentForm.get('username')?.touched">
+            Username cannot be more than 25 characters
+        </mat-error>
     </mat-form-field>
 
     <button mat-flat-button color="primary" [disabled]="!parentForm.valid || parentForm.pristine" (click)="updateParent()">Update</button>

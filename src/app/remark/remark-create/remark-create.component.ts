@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../material/material.module';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Location, NgFor } from '@angular/common';
+import { Location, NgFor, NgIf } from '@angular/common';
 import { RemarkService } from '../../services/remark.service';
 import { SubjectService } from '../../services/subject.service';
 import { GradeService } from '../../services/grade.service';
@@ -15,14 +15,14 @@ import { Remark } from '../../models/remark';
 @Component({
   selector: 'app-remark-create',
   standalone: true,
-  imports: [ MaterialModule, ReactiveFormsModule, NgFor ],
+  imports: [ MaterialModule, ReactiveFormsModule, NgFor, NgIf ],
   providers: [ RemarkService, SubjectService, GradeService, AuthService ],
   templateUrl: './remark-create.component.html',
   styleUrl: './remark-create.component.css'
 })
 export class RemarkCreateComponent implements OnInit {
 	remarkForm: FormGroup = this.formBuilder.group({
-		heading: ['', Validators.required],
+		heading: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(64)]],
 		student: ['', Validators.required],
 		teacher: [''],
 		subject: [''],

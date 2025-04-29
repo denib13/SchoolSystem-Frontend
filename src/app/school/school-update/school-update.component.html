@@ -3,11 +3,29 @@
     <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput formControlName="name" class="form-control" required>
+        <mat-error *ngIf="schoolForm.get('name')?.hasError('required') && schoolForm.get('name')?.touched">
+            Name is required
+        </mat-error>
+        <mat-error *ngIf="schoolForm.get('name')?.hasError('minlength') && schoolForm.get('name')?.touched">
+            Name must be at least 3 characters long
+        </mat-error>
+        <mat-error *ngIf="schoolForm.get('name')?.hasError('maxlength') && schoolForm.get('name')?.touched">
+            Name cannot be more than 64 characters
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field >
         <mat-label>City</mat-label>
-        <input matInput formControlName="city">
+        <input matInput formControlName="city" class="form-control" required>
+        <mat-error *ngIf="schoolForm.get('city')?.hasError('required') && schoolForm.get('city')?.touched">
+            City is required
+        </mat-error>
+        <mat-error *ngIf="schoolForm.get('city')?.hasError('minlength') && schoolForm.get('city')?.touched">
+            City must be at least 3 characters long
+        </mat-error>
+        <mat-error *ngIf="schoolForm.get('city')?.hasError('maxlength') && schoolForm.get('city')?.touched">
+            City cannot be more than 32 characters
+        </mat-error>
     </mat-form-field>
 
     <button mat-flat-button color="primary" [disabled]="!schoolForm.valid || schoolForm.pristine" (click)="updateSchool()">Update</button>

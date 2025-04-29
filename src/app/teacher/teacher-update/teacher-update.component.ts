@@ -5,23 +5,24 @@ import { TeacherService } from '../../services/teacher.service';
 import { Teacher } from '../../models/teacher';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-teacher-update',
   standalone: true,
-  imports: [ MaterialModule, ReactiveFormsModule ],
+  imports: [ MaterialModule, ReactiveFormsModule, NgIf ],
   providers: [ TeacherService ],
   templateUrl: './teacher-update.component.html',
   styleUrl: './teacher-update.component.css'
 })
 export class TeacherUpdateComponent implements OnInit {
 	teacherForm: FormGroup = this.formBuilder.group({
-		name: ['', Validators.required],
-		middleName: ['', Validators.required], 
-		surname: ['', Validators.required],
-		nationalIdNumber: [''],
-		username: ['', Validators.required],
-		password: ['', Validators.required],
+		name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+    	middleName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]], 
+    	surname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+    	nationalIdNumber: [''],
+    	username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(25)]],
+		password: [''],
 		email: ['']
 	})
 

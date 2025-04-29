@@ -15,8 +15,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup = this.formBuilder.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required]
+    username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(25)]],
+    password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(32)]]
   });
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}

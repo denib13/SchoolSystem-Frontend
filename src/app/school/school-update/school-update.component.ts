@@ -5,19 +5,20 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { School } from '../../models/school';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-school-update',
   standalone: true,
-  imports: [ MaterialModule, ReactiveFormsModule ],
+  imports: [ MaterialModule, ReactiveFormsModule, NgIf ],
   providers: [ SchoolService ],
   templateUrl: './school-update.component.html',
   styleUrl: './school-update.component.css'
 })
 export class SchoolUpdateComponent implements OnInit {
   schoolForm: FormGroup = this.formBuilder.group({
-    name: ['', Validators.required],
-    city: ['', Validators.required]
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(64)]],
+    city: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(32)]]
   });
 
   id!: string;

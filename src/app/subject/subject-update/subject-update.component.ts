@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../material/material.module';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { SubjectService } from '../../services/subject.service';
 import { GradeService } from '../../services/grade.service';
 import { SchoolService } from '../../services/school.service';
@@ -14,14 +14,14 @@ import { Grade } from '../../models/grade';
 @Component({
   selector: 'app-subject-update',
   standalone: true,
-  imports: [ MaterialModule, ReactiveFormsModule, NgFor ],
+  imports: [ MaterialModule, ReactiveFormsModule, NgFor, NgIf ],
   providers: [ SubjectService, GradeService, SchoolService ],
   templateUrl: './subject-update.component.html',
   styleUrl: './subject-update.component.css'
 })
 export class SubjectUpdateComponent implements OnInit {
 	subjectForm: FormGroup = this.formBuilder.group({
-		name: ['', Validators.required],
+		name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(32)]],
 		semester: ['', Validators.required],
 		teacher: ['', Validators.required],
 		schoolClass: ['']

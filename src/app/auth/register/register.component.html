@@ -3,41 +3,98 @@
     <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput formControlName="name" class="form-control" required>
+        <mat-error *ngIf="registerForm.get('name')?.hasError('required') && registerForm.get('name')?.touched">
+            Name is required
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('name')?.hasError('minlength') && registerForm.get('name')?.touched">
+            Name must be at least 2 characters long
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('name')?.hasError('maxlength') && registerForm.get('name')?.touched">
+            Name cannot be more than 50 characters
+          </mat-error>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Middle Name</mat-label>
         <input matInput formControlName="middleName" class="form-control" required>
+        <mat-error *ngIf="registerForm.get('middleName')?.hasError('required') && registerForm.get('middleName')?.touched">
+            Middle Name is required
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('middleName')?.hasError('minlength') && registerForm.get('middleName')?.touched">
+            Middle Name must be at least 2 characters long
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('middleName')?.hasError('maxlength') && registerForm.get('middleName')?.touched">
+            Middle Name cannot be more than 50 characters
+          </mat-error>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Surname</mat-label>
         <input matInput formControlName="surname" class="form-control" required>
+        <mat-error *ngIf="registerForm.get('surname')?.hasError('required') && registerForm.get('surname')?.touched">
+            Surname is required
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('surname')?.hasError('minlength') && registerForm.get('surname')?.touched">
+            Surname must be at least 2 characters long
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('surname')?.hasError('maxlength') && registerForm.get('surname')?.touched">
+            Surname cannot be more than 50 characters
+          </mat-error>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>National Id Number</mat-label>
         <input matInput formControlName="nationalIdNumber" class="form-control" required>
+        <mat-error *ngIf="registerForm.get('nationalIdNumber')?.hasError('required') && registerForm.get('nationalIdNumber')?.touched">
+            National Id Number is required
+          </mat-error>
+          <mat-error *ngIf="(registerForm.get('nationalIdNumber')?.hasError('minlength') || registerForm.get('nationalIdNumber')?.hasError('maxlength')) && registerForm.get('nationalIdNumber')?.touched">
+            National Id Number must be exactly 10 characters long
+          </mat-error>
     </mat-form-field>
     
     <mat-form-field>
         <mat-label>Username</mat-label>
         <input matInput formControlName="username" class="form-control" required>
+        <mat-error *ngIf="registerForm.get('username')?.hasError('required') && registerForm.get('username')?.touched">
+            Username is required
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('username')?.hasError('minlength') && registerForm.get('username')?.touched">
+            Username must be at least 4 characters long
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('username')?.hasError('maxlength') && registerForm.get('username')?.touched">
+            Username cannot be more than 25 characters
+          </mat-error>
     </mat-form-field>
 
     <mat-form-field >
         <mat-label>Password</mat-label>
         <input type="password" matInput formControlName="password">
+        <mat-error *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.touched">
+            Password must be at least 5 characters long
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('password')?.hasError('maxlength') && registerForm.get('password')?.touched">
+            Password cannot be more than 32 characters
+          </mat-error>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Email</mat-label>
         <input type="email" matInput formControlName="email" class="form-control" required>
+        <mat-error *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched">
+            Please enter a valid email address
+          </mat-error>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Role</mat-label>
-        <mat-select formControlName="type">
+        <mat-select formControlName="type" required>
             <mat-option *ngFor="let role of roles" [value]="role">
                 {{ role }}
             </mat-option>

@@ -3,21 +3,21 @@ import { MaterialModule } from '../../material/material.module';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RemarkService } from '../../services/remark.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Location, NgIf } from '@angular/common';
 import { Remark } from '../../models/remark';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-remark-update',
   standalone: true,
-  imports: [ MaterialModule, ReactiveFormsModule ],
+  imports: [ MaterialModule, ReactiveFormsModule, NgIf ],
   providers: [ RemarkService ],
   templateUrl: './remark-update.component.html',
   styleUrl: './remark-update.component.css'
 })
 export class RemarkUpdateComponent implements OnInit {
 	remarkForm: FormGroup = this.formBuilder.group({
-		heading: ['', Validators.required],
+		heading: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(64)]],
 		student: [''],
 		teacher: [''],
 		subject: [''],

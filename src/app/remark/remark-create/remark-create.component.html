@@ -13,6 +13,15 @@
     <mat-form-field>
         <mat-label>Heading</mat-label>
         <input matInput formControlName="heading" class="form-control" required>
+        <mat-error *ngIf="remarkForm.get('heading')?.hasError('required') && remarkForm.get('heading')?.touched">
+            Heading is required
+        </mat-error>
+        <mat-error *ngIf="remarkForm.get('heading')?.hasError('minlength') && remarkForm.get('heading')?.touched">
+            Heading must be at least 3 characters long
+        </mat-error>
+        <mat-error *ngIf="remarkForm.get('heading')?.hasError('maxlength') && remarkForm.get('heading')?.touched">
+            Heading cannot be more than 64 characters
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field>

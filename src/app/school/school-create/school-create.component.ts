@@ -4,19 +4,20 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { SchoolService } from '../../services/school.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-school-create',
   standalone: true,
-  imports: [ MaterialModule, ReactiveFormsModule ],
+  imports: [ MaterialModule, ReactiveFormsModule, NgIf ],
   providers: [ SchoolService ],
   templateUrl: './school-create.component.html',
   styleUrl: './school-create.component.css'
 })
 export class SchoolCreateComponent {
   schoolForm: FormGroup = this.formBuilder.group({
-    name: ['', Validators.required],
-    city: ['', Validators.required]
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(64)]],
+    city: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(32)]]
   });
 
   constructor(private formBuilder: FormBuilder, private schoolService: SchoolService, private router: Router) {}
